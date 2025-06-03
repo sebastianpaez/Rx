@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía Interactiva RM Cerebral en Esclerosis Tuberosa Pediátrica</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .content-section {
+            display: none;
+        }
+        .content-section.active {
+            display: block;
+        }
+        /* Estilos para el modal */
+        .modal {
+            display: none; /* Por defecto oculto */
+            position: fixed; /* Se queda fijo en la pantalla */
+            z-index: 100; /* Se sitúa por encima de todo */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto; /* Permite scroll si el contenido es largo */
+            background-color: rgba(0,0,0,0.6); /* Fondo negro con opacidad */
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 10% auto; /* 10% desde arriba y centrado */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; /* Podría ser más o menos, dependiendo del diseño */
+            max-width: 700px;
+            border-radius: 8px;
+            position: relative;
+        }
+        .close-button {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+        }
+        .close-button:hover,
+        .close-button:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .step-indicator {
+            font-size: 0.875rem; /* text-sm */
+            color: #6b7280; /* text-gray-500 */
+            margin-bottom: 1rem; /* mb-4 */
+        }
+        h2 {
+            font-size: 1.5rem; /* text-2xl */
+            font-weight: 600; /* font-semibold */
+            color: #1f2937; /* text-gray-800 */
+            margin-bottom: 1rem; /* mb-4 */
+        }
+        h3 {
+            font-size: 1.25rem; /* text-xl */
+            font-weight: 600; /* font-semibold */
+            color: #2563eb; /* text-blue-600 */
+            margin-top: 1.5rem; /* mt-6 */
+            margin-bottom: 0.5rem; /* mb-2 */
+        }
+        p, ul {
+            color: #374151; /* text-gray-700 */
+            margin-bottom: 0.75rem; /* mb-3 */
+            line-height: 1.6;
+        }
+        ul {
+            list-style-type: disc;
+            margin-left: 1.5rem; /* ml-6 */
+        }
+        li {
+            margin-bottom: 0.5rem; /* mb-2 */
+        }
+        strong {
+            font-weight: 600; /* font-semibold */
+            color: #111827; /* text-gray-900 */
+        }
+        .button-container {
+            margin-top: 2rem; /* mt-8 */
+            display: flex;
+            justify-content: space-between;
+        }
+        .nav-button {
+            background-color: #3b82f6; /* bg-blue-500 */
+            color: white;
+            font-weight: 600; /* font-semibold */
+            padding: 0.75rem 1.5rem; /* py-3 px-6 */
+            border-radius: 0.375rem; /* rounded-md */
+            transition: background-color 0.3s;
+        }
+        .nav-button:hover {
+            background-color: #2563eb; /* hover:bg-blue-600 */
+        }
+        .nav-button.secondary {
+            background-color: #6b7280; /* bg-gray-500 */
+        }
+        .nav-button.secondary:hover {
+            background-color: #4b5563; /* hover:bg-gray-600 */
+        }
+        .info-box {
+            background-color: #e0f2fe; /* bg-sky-100 */
+            border-left: 4px solid #0ea5e9; /* border-sky-500 */
+            padding: 1rem; /* p-4 */
+            margin-top: 1rem; /* mt-4 */
+            margin-bottom: 1rem; /* mb-4 */
+            border-radius: 0.25rem; /* rounded */
+        }
+        .info-box p {
+            color: #0c4a6e; /* text-sky-800 */
+            margin-bottom: 0;
+        }
+        .code-block {
+            background-color: #f3f4f6; /* bg-gray-100 */
+            padding: 1rem; /* p-4 */
+            border-radius: 0.375rem; /* rounded-md */
+            overflow-x: auto;
+            white-space: pre-wrap; /* Allows wrapping and preserves spaces */
+            word-wrap: break-word; /* Breaks long words */
+            font-family: monospace;
+            font-size: 0.875rem; /* text-sm */
+            color: #1f2937; /* text-gray-800 */
+            margin-top: 1rem; /* mt-4 */
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col items-center justify-center p-4">
+
+    <div class="bg-white p-6 sm:p-8 rounded-lg shadow-xl w-full max-w-3xl">
+        <header class="text-center mb-6">
+            <h1 class="text-3xl font-bold text-blue-700">Guía Interactiva de RM Cerebral en Esclerosis Tuberosa Pediátrica</h1>
+            <p class="text-gray-600 mt-2">Una herramienta paso a paso para radiólogos pediátricos.</p>
+        </header>
+
+        <div id="step-indicator" class="step-indicator">Paso 1 de 7</div>
+
+        <!-- Paso 0: Bienvenida -->
+        <div id="step-0" class="content-section active">
+            <h2>Bienvenida</h2>
+            <p>Esta guía interactiva está diseñada para ayudarte a interpretar sistemáticamente los hallazgos de la Resonancia Magnética (RM) cerebral en pacientes pediátricos con sospecha o diagnóstico de Complejo de Esclerosis Tuberosa (CET).</p>
+            <p>Navega a través de los pasos para revisar los protocolos, identificar lesiones características y acceder a una plantilla de informe.</p>
+            <div class="info-box">
+                <p><strong>Recuerda:</strong> La información aquí presentada es una guía y debe complementarse con el juicio clínico y la literatura actualizada. Siempre compara con estudios previos si están disponibles.</p>
+            </div>
+            <div class="button-container">
+                <button onclick="navigateTo(1)" class="nav-button ml-auto">Comenzar Guía</button>
+            </div>
+        </div>
+
+        <!-- Paso 1: Datos del Paciente y Protocolo General -->
+        <div id="step-1" class="content-section">
+            <h2>Paso 1: Datos del Paciente y Protocolo General</h2>
+            <p>Antes de analizar las imágenes, es crucial considerar la <strong>edad del paciente</strong>. La apariencia de las lesiones del CET en RM varía significativamente con la edad y el grado de mielinización cerebral.</p>
+            
+            <h3>Protocolos Recomendados según Edad:</h3>
+            <ul>
+                <li>
+                    <strong>Neonatos y Lactantes (&lt;6 meses - aprox. &lt;1 año para inversión completa):</strong>
+                    <ul>
+                        <li><strong>T1 (volumétrica 3D sagital es ideal):</strong> ¡Secuencia CLAVE! Los túberes y SEN suelen ser <strong>hiperintensos</strong> en T1 respecto a la sustancia blanca no mielinizada (que es hipointensa). Las LMR también pueden ser hiperintensas.</li>
+                        <li><strong>T2 (axial y coronal):</strong> Los túberes y SEN pueden ser <strong>hipointensos</strong> o isointensos. Útil para anatomía general y descartar otras patologías.</li>
+                        <li><strong>FLAIR:</strong> Menos sensible en esta etapa para túberes que T1. La supresión del LCR puede ayudar a delinear lesiones periventriculares.</li>
+                        <li><strong>SWI/T2* (axial):</strong> Para detectar calcificaciones (pueden estar ausentes en esta edad temprana) y hemorragias. (T2* se refiere a T2 estrella)</li>
+                        <li><strong>Contraste con Gadolinio:</strong> Generalmente <strong>NO</strong> se recomienda de rutina en el estudio inicial en este grupo de edad, salvo sospecha específica de SEGA o complicación.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Niños Mayores (&gt;1-2 años) y Adolescentes (cerebro mielinizado):</strong>
+                    <ul>
+                        <li><strong>FLAIR (3D axial y/o coronal es ideal):</strong> ¡Secuencia CLAVE para túberes! Los túberes son marcadamente <strong>hiperintensos</strong>. También evidencia LMR.</li>
+                        <li><strong>T1 (volumétrica 3D sagital):</strong> Los túberes suelen ser <strong>hipointensos</strong>. Fundamental para morfología, SEN y evaluación de SEGA (con contraste).</li>
+                        <li><strong>T2 (axial y coronal):</strong> Los túberes son <strong>hiperintensos</strong>. Útil para caracterizar SEGA y AMB.</li>
+                        <li><strong>SWI/T2* (axial):</strong> Esencial para calcificaciones en SEN y túberes (focos hipointensos). (T2* se refiere a T2 estrella)</li>
+                        <li><strong>T1 post-contraste con Gadolinio (axial y coronal, idealmente volumétrico):</strong> ¡IMPRESCINDIBLE para la evaluación y seguimiento de SEGA! Los SEGA típicamente muestran realce intenso.</li>
+                        <li><strong>DWI/ADC (axial):</strong> Generalmente no hay restricción en lesiones típicas de CET. Túberes/SEN suelen tener ADC aumentado.</li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="info-box">
+                <p><strong>¡Atención a la inversión de contraste!</strong> La señal de las lesiones cambia drásticamente con la mielinización. Lo que es hiperintenso en T1 en un neonato puede volverse hipointenso en un niño mayor.</p>
+            </div>
+            <div class="button-container">
+                <button onclick="navigateTo(0)" class="nav-button secondary">Anterior</button>
+                <button onclick="navigateTo(2)" class="nav-button">Siguiente: Túberes Corticales</button>
+            </div>
+        </div>
+
+        <!-- Paso 2: Evaluación de Túberes Corticales y Subcorticales -->
+        <div id="step-2" class="content-section">
+            <h2>Paso 2: Evaluación de Túberes Corticales y Subcorticales</h2>
+            <p>Los túberes son hamartomas glioneuronales, la lesión cortical distintiva del CET. Busca engrosamientos de la corteza y/o lesiones que se extienden a la sustancia blanca subcortical. Predominan en lóbulos frontales.</p>
+
+            <h3>Apariencia en RM según Secuencia y Edad:</h3>
+            <ul>
+                <li><strong>En T1:</strong>
+                    <ul>
+                        <li><u>Neonatos/Lactantes pequeños:</u> Típicamente <strong>hiperintensos</strong>.</li>
+                        <li><u>Niños mayores/Adolescentes:</u> Típicamente <strong>hipointensos</strong>.</li>
+                    </ul>
+                </li>
+                <li><strong>En T2:</strong>
+                    <ul>
+                        <li><u>Neonatos/Lactantes pequeños:</u> Típicamente <strong>hipointensos</strong> o isointensos.</li>
+                        <li><u>Niños mayores/Adolescentes:</u> Típicamente <strong>hiperintensos</strong>.</li>
+                    </ul>
+                </li>
+                <li><strong>En FLAIR (especialmente en cerebro mielinizado):</strong>
+                    <ul>
+                        <li>¡Secuencia más sensible! Los túberes son marcadamente <strong>hiperintensos</strong>.</li>
+                        <li><strong>Variante quística:</strong> Común en niños &lt;7 años. Centro <strong>hipointenso</strong> en FLAIR (similar al LCR) con un anillo periférico hiperintenso. Se asocia a genotipo <em>TSC2</em> y mayor frecuencia de crisis.</li>
+                    </ul>
+                </li>
+                <li><strong>En SWI/T2* (axial):</strong> (T2* se refiere a T2 estrella)
+                    <ul>
+                        <li>Busca focos de marcada <strong>hipointensidad</strong> (efecto "blooming") que indican calcificación. La calcificación es común, especialmente después de los 2 años.</li>
+                    </ul>
+                </li>
+                <li><strong>Realce con Contraste (Gadolinio):</strong>
+                    <ul>
+                        <li>Es <strong>infrecuente</strong> (aproximadamente 10% de los túberes). Un leve realce puede verse en túberes degenerados y calcificados.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h3>Subtipos de Túberes por RM (correlación fenotípica):</h3>
+            <ul>
+                <li><strong>Tipo A:</strong> Isointensos en T1 y sutilmente hiperintensos en T2/FLAIR. Asociados a fenotipos más leves. ¡Pueden pasar desapercibidos!</li>
+                <li><strong>Tipo B:</strong> Hipointensos en T1 y homogéneamente hiperintensos en T2/FLAIR. Fenotipos intermedios.</li>
+                <li><strong>Tipo C (quistiforme):</strong> Hipointensos en T1, hiperintensos en T2, con centro hipointenso y borde hiperintenso en FLAIR. Fenotipos más severos.</li>
+            </ul>
+             <div class="info-box">
+                <p><strong>DTI/ADC:</strong> Los túberes suelen mostrar ADC aumentado (difusión facilitada) y FA disminuida, reflejando desorganización microestructural.</p>
+            </div>
+            <div class="button-container">
+                <button onclick="navigateTo(1)" class="nav-button secondary">Anterior</button>
+                <button onclick="navigateTo(3)" class="nav-button">Siguiente: Nódulos Subependimarios (SEN)</button>
+            </div>
+        </div>
+
+        <!-- Paso 3: Evaluación de Nódulos Subependimarios (SEN) -->
+        <div id="step-3" class="content-section">
+            <h2>Paso 3: Evaluación de Nódulos Subependimarios (SEN)</h2>
+            <p>Los SEN son hamartomas pequeños (&lt;1 cm) localizados en el revestimiento ependimario de los ventrículos. Más frecuentes en paredes de ventrículos laterales (cerca de núcleos caudados, foramen de Monro) y atrios.</p>
+
+            <h3>Características de Señal en RM:</h3>
+            <ul>
+                <li><strong>En T1:</strong>
+                    <ul>
+                        <li><u>Neonatos/Lactantes pequeños:</u> Típicamente <strong>hiperintensos</strong>.</li>
+                        <li><u>Niños mayores/Adolescentes:</u> A menudo <strong>hiperintensos</strong>, pero pueden ser isointensos respecto a la sustancia gris.</li>
+                    </ul>
+                </li>
+                <li><strong>En T2:</strong>
+                    <ul>
+                        <li><u>Neonatos/Lactantes pequeños:</u> Típicamente <strong>hipointensos</strong>.</li>
+                        <li><u>Niños mayores/Adolescentes:</u> Señal variable, a menudo isointensos o <strong>hipointensos</strong> si están calcificados.</li>
+                    </ul>
+                </li>
+                <li><strong>En SWI/T2* (axial):</strong> (T2* se refiere a T2 estrella)
+                    <ul>
+                        <li>¡Secuencia CLAVE para detectar calcificaciones! Los SEN calcificados aparecen como focos marcadamente <strong>hipointensos</strong> con artefacto de "blooming". La calcificación es muy frecuente (&gt;1 año), pero puede estar ausente en lactantes.</li>
+                    </ul>
+                </li>
+                <li><strong>Realce con Contraste (Gadolinio):</strong>
+                    <ul>
+                        <li>Es <strong>variable</strong> (hasta un 50% de los SEN pueden realzar). El realce por sí solo NO indica transformación a SEGA ni es pronóstico.</li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="info-box">
+                <p><strong>¡Importante!</strong> Los SEN son considerados precursores de los Astrocitomas Subependimarios de Células Gigantes (SEGA). Es fundamental medirlos (diámetro máximo) y compararlos meticulosamente con estudios previos para detectar cualquier crecimiento, lo cual es un signo de alerta para posible transformación a SEGA.</p>
+            </div>
+             <div class="info-box">
+                <p><strong>DTI/ADC:</strong> Similar a los túberes, los SEN suelen mostrar ADC aumentado.</p>
+            </div>
+            <div class="button-container">
+                <button onclick="navigateTo(2)" class="nav-button secondary">Anterior</button>
+                <button onclick="navigateTo(4)" class="nav-button">Siguiente: SEGA</button>
+            </div>
+        </div>
+
+        <!-- Paso 4: Evaluación de Astrocitoma Subependimario de Células Gigantes (SEGA) -->
+        <div id="step-4" class="content-section">
+            <h2>Paso 4: Evaluación de Astrocitoma Subependimario de Células Gigantes (SEGA)</h2>
+            <p>El SEGA es un tumor benigno (OMS Grado I) que surge de un SEN preexistente, típicamente cerca del <strong>foramen de Monro</strong>. Ocurre en 10-25% de pacientes con CET. ¡La vigilancia de su crecimiento es crucial!</p>
+
+            <h3>Criterios Diagnósticos en RM:</h3>
+            <ul>
+                <li><strong>Tamaño:</strong> Lesión subependimaria &gt;1 cm de diámetro. (Nota: el crecimiento es más importante que el tamaño absoluto inicial).</li>
+                <li><strong>¡CRECIMIENTO DOCUMENTADO!:</strong> El criterio más fiable y clínicamente relevante. Un aumento de volumen &gt;20% en estudios seriados define crecimiento. Mide en 3D.</li>
+                <li><strong>Localización:</strong> Periventricular, especialmente en el foramen de Monro.</li>
+                <li><strong>Realce con Contraste:</strong> Típicamente muestran <strong>realce intenso y a menudo heterogéneo</strong> tras la administración de gadolinio.</li>
+                <li><strong>Hidrocefalia:</strong> Una lesión subependimaria que causa hidrocefalia obstructiva se considera un SEGA, independientemente de su tamaño.</li>
+            </ul>
+
+            <h3>Características de Señal en RM:</h3>
+            <ul>
+                <li><strong>En T1:</strong> Generalmente hipo/isointensos respecto al parénquima, señal heterogénea.</li>
+                <li><strong>En T2:</strong> Generalmente hiperintensos, señal heterogénea. Pueden contener:
+                    <ul>
+                        <li>Componentes quísticos (muy hiperintensos en T2).</li>
+                        <li>Calcificaciones (hipointensas en T2*/SWI, variables en T1/T2). (T2* se refiere a T2 estrella)</li>
+                    </ul>
+                </li>
+                 <li><strong>En T1 post-contraste:</strong> ¡Realce intenso y a menudo heterogéneo!</li>
+                <li><strong>En SWI/T2* (axial):</strong> Busca calcificaciones (frecuentes). (T2* se refiere a T2 estrella)</li>
+            </ul>
+
+            <div class="info-box">
+                <p><strong>¡ALERTA HIDROCEFALIA!</strong> Dada su localización, el crecimiento de un SEGA puede obstruir el foramen de Monro, causando hidrocefalia obstructiva. Evalúa cuidadosamente el tamaño de los ventrículos y la permeabilidad de los forámenes.</p>
+            </div>
+            <div class="info-box">
+                <p><strong>Seguimiento:</strong> RM cada 1-3 años en &lt;25 años. Más frecuente (cada 3-12 meses) si hay SEGA conocido, crecimiento, o &gt;1cm cerca del foramen de Monro. Considerar mediciones volumétricas para seguimiento preciso del crecimiento.</p>
+            </div>
+
+            <div class="button-container">
+                <button onclick="navigateTo(3)" class="nav-button secondary">Anterior</button>
+                <button onclick="navigateTo(5)" class="nav-button">Siguiente: Anomalías de Sustancia Blanca</button>
+            </div>
+        </div>
+
+        <!-- Paso 5: Evaluación de Anomalías de la Sustancia Blanca (AMB) -->
+        <div id="step-5" class="content-section">
+            <h2>Paso 5: Evaluación de Anomalías de la Sustancia Blanca (AMB)</h2>
+            <p>Las AMB son hallazgos frecuentes, reflejando alteración de la migración y diferenciación neuronal/glial. Son las lesiones neuroanatómicas más comunes en CET.</p>
+
+            <h3>Tipos y Apariencia en RM:</h3>
+            <ul>
+                <li>
+                    <strong>Líneas de Migración Radial (LMR):</strong>
+                    <ul>
+                        <li>Bandas o trayectos lineales/curvilíneos que se extienden desde la superficie ventricular a través de la sustancia blanca hacia la corteza (a menudo terminan en un túber cortical).</li>
+                        <li><u>Neonatos/Lactantes pequeños:</u> Pueden ser relativamente <strong>hiperintensas en T1</strong>.</li>
+                        <li><u>Niños mayores/Adolescentes:</u> Típicamente <strong>hiperintensas en T2 y FLAIR</strong>, e isointensas o hipointensas en T1.</li>
+                        <li>Raramente muestran realce con contraste.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Lesiones Nodulares o Mal Definidas:</strong>
+                    <ul>
+                        <li>Focos de hiperseñal en T2/FLAIR en la sustancia blanca, de morfología nodular o con bordes poco definidos.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Lesiones Quísticas:</strong>
+                    <ul>
+                        <li>Pequeños quistes intraparenquimatosos en la sustancia blanca.</li>
+                        <li>Señal similar al LCR en todas las secuencias (hipointensos en T1, hiperintensos en T2/FLAIR).</li>
+                        <li>Sin realce tras la administración de contraste. Se asemejan a espacios perivasculares dilatados.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Cambios Difusos:</strong>
+                    <ul>
+                        <li>Afectación más extensa y difusa de la sustancia blanca con áreas de hiperseñal en T2/FLAIR.</li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="info-box">
+                <p><strong>DTI:</strong> Las LMR y otras AMB muestran disminución de la Anisotropía Fraccional (FA) y aumento de la Difusividad Media (MD), indicando alteración microestructural. Estos hallazgos se han correlacionado con TAND (Trastornos del Neurodesarrollo Asociados al CET).</p>
+            </div>
+            <div class="button-container">
+                <button onclick="navigateTo(4)" class="nav-button secondary">Anterior</button>
+                <button onclick="navigateTo(6)" class="nav-button">Siguiente: Otros Hallazgos y Checklist</button>
+            </div>
+        </div>
+
+        <!-- Paso 6: Otros Hallazgos Relevantes y Checklist Final -->
+        <div id="step-6" class="content-section">
+            <h2>Paso 6: Otros Hallazgos Relevantes y Checklist Final</h2>
+            
+            <h3>Otros Hallazgos a Considerar:</h3>
+            <ul>
+                <li><strong>Hidrocefalia:</strong> ¿Está presente? Si es así, ¿es obstructiva (ej. por un SEGA bloqueando el foramen de Monro) o comunicante? Evaluar el tamaño de los ventrículos, surcos y cisternas.</li>
+                <li><strong>Lesiones Cerebelosas:</strong> Los túberes también pueden ocurrir en el cerebelo. Buscar engrosamientos corticales o alteraciones de señal en los hemisferios cerebelosos y vermis.</li>
+                <li><strong>Ausencia de Lesiones Cerebrales:</strong> Aunque raro, se han documentado casos de CET con RM cerebral inicialmente normal, especialmente en pacientes muy jóvenes o con formas leves. El diagnóstico de CET se basa en criterios clínicos y genéticos, no únicamente en la RM.</li>
+                <li><strong>Lesiones Vasculares:</strong> Aunque infrecuentes, se han descrito aneurismas intracraneales en pacientes con CET. Prestar atención a las estructuras vasculares, especialmente en secuencias como angio-RM (si se realiza) o en imágenes T2* / SWI. (T2* se refiere a T2 estrella)</li>
+            </ul>
+
+            <h3>Checklist Rápido para el Informe:</h3>
+            <ul class="list-disc list-inside text-gray-700 space-y-2">
+                <li><input type="checkbox" class="mr-2"><strong>Comparación con Estudios Previos:</strong> ¡ABSOLUTAMENTE CRUCIAL! ¿Hay cambios en el tamaño, número o características de las lesiones? ¿Crecimiento de SEN/SEGA?</li>
+                <li><input type="checkbox" class="mr-2"><strong>Medición de Lesiones:</strong>
+                    <ul>
+                        <li>SEN: Diámetro máximo.</li>
+                        <li>SEGA: Medición tridimensional (craneo-caudal, antero-posterior, transverso). Considerar volumetría si hay software disponible y se sospecha crecimiento.</li>
+                    </ul>
+                </li>
+                <li><input type="checkbox" class="mr-2"><strong>Foramen de Monro:</strong> ¿Permeable? ¿Compresión o distorsión por alguna lesión adyacente (especialmente SEGA)?</li>
+                <li><input type="checkbox" class="mr-2"><strong>Interpretación de Señal Acorde a la Edad:</strong> ¿Se ha tenido en cuenta el estado de mielinización para interpretar la intensidad de señal de las lesiones?</li>
+                <li><input type="checkbox" class="mr-2"><strong>Secuencias de Susceptibilidad (SWI/T2*):</strong> ¿Revisadas cuidadosamente para detectar calcificaciones (SEN, túberes) y/o hemorragia? (T2* se refiere a T2 estrella)</li>
+                <li><input type="checkbox" class="mr-2"><strong>Contraste con Gadolinio (si se administró):</strong>
+                    <ul>
+                        <li>¿Realce de SEGA (típicamente intenso y heterogéneo)?</li>
+                        <li>¿Realce de SEN (variable, no necesariamente patológico)?</li>
+                        <li>¿Realce atípico de túberes (infrecuente)?</li>
+                    </ul>
+                </li>
+                <li><input type="checkbox" class="mr-2"><strong>Evaluación Sistemática de Todas las Regiones:</strong> Cortical, subcortical, periventricular, sustancia blanca profunda, fosa posterior.</li>
+                <li><input type="checkbox" class="mr-2"><strong>Conclusión Clara:</strong> Resumir los hallazgos principales y su implicación (ej. estabilidad, progresión, necesidad de seguimiento más estrecho).</li>
+            </ul>
+
+            <div class="button-container">
+                <button onclick="navigateTo(5)" class="nav-button secondary">Anterior</button>
+                <button onclick="openModal('reportModal')" class="nav-button">Ver Plantilla de Informe</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para la Plantilla de Informe -->
+    <div id="reportModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal('reportModal')">&times;</span>
+            <h2>Plantilla de Informe Radiológico (Ejemplo)</h2>
+            <p>Esta es una plantilla básica que puedes copiar, pegar y editar según los hallazgos específicos de tu paciente. Recuerda adaptarla al estilo y requerimientos de tu institución.</p>
+            <div class="code-block" id="reportTemplate">
+**RM CEREBRAL EN [SOSPECHA/SEGUIMIENTO] DE COMPLEJO DE ESCLEROSIS TUBEROSA**
+
+**Datos clínicos:** Paciente de [Edad] años, [sexo], con [diagnóstico conocido de CET / sospecha clínica de CET por (ej. crisis epilépticas, máculas hipomelanóticas)]. [Motivo del estudio: ej. estudio inicial, seguimiento de SEGA, evaluación prequirúrgica, etc.]. [Antecedentes relevantes: ej. mutación TSC1/TSC2 conocida, TAND, tipo de crisis].
+
+**Técnica:**
+Estudio de Resonancia Magnética cerebral realizado en equipo de [1.5T / 3T] [sin/con] sedación. Se adquirieron secuencias ponderadas en:
+- T1 sagital volumétrico [sin y con contraste intravenoso (Gadolinio, [dosis] ml)]
+- T2 axial y coronal
+- FLAIR axial y coronal [3D si aplica]
+- SWI (o T2* Eco de Gradiente) axial (T2* se refiere a T2 estrella)
+- DWI/ADC axial
+[Otras secuencias relevantes realizadas, ej., T1 con transferencia de magnetización, ASL, DTI, MRS]
+Comparación con estudio previo de fecha [Fecha si aplica].
+
+**Hallazgos:**
+
+* **Túberes Corticales y/o Subcorticales:**
+    * Se identifican [múltiples/escasos/aproximadamente (número)] túberes corticales y/o subcorticales.
+    * Localización predominante en [lóbulos frontales, parietales, etc.]. También se observan en [otras localizaciones].
+    * Características de señal: [Describir señal en T1, T2, FLAIR acorde a la edad y mielinización. Ej: hipointensos en T1, hiperintensos en T2 y FLAIR].
+    * Algunos túberes muestran [calcificaciones (visibles como focos hipointensos en SWI/T2*)] y/o [cambios quísticos (centro hipointenso en FLAIR con anillo hiperintenso periférico)]. (T2* se refiere a T2 estrella)
+    * [No se observa/Se observa leve] realce anómalo de los túberes tras la administración de contraste.
+    * En comparación con el estudio previo de [fecha], los túberes [permanecen estables / sin cambios significativos / (describir cambios si los hay)].
+
+* **Nódulos Subependimarios (SEN):**
+    * Se observan [múltiples/escasos/(número)] nódulos subependimarios, localizados predominantemente en [paredes de ventrículos laterales, adyacentes al surco caudotalámico, foramen de Monro, etc.].
+    * El mayor mide aproximadamente [dimensiones] mm.
+    * Características de señal: [Describir señal en T1, T2. Ej: hiperintensos en T1, isointensos en T2].
+    * Muchos de ellos presentan focos de calcificación evidentes en secuencias SWI/T2*. (T2* se refiere a T2 estrella)
+    * Tras la administración de contraste, [algunos SEN muestran leve realce / no se observa realce significativo de los SEN].
+    * En comparación con el estudio previo, los SEN [permanecen estables / (describir cambios)].
+
+* **Astrocitoma Subependimario de Células Gigantes (SEGA):**
+    * [No se identifican lesiones compatibles con SEGA.]
+    * [Se identifica una lesión compatible con SEGA localizada en [región del foramen de Monro derecho/izquierdo], que mide [dimensiones en mm: CC x AP x T]. Presenta señal [heterogénea, con componentes (quísticos/sólidos/calcificados)]. Muestra realce [intenso y heterogéneo / homogéneo] tras la administración de contraste.
+    * Este SEGA [causa/no causa] obstrucción del foramen de Monro y/o hidrocefalia. El sistema ventricular se encuentra [de tamaño normal / dilatado (describir grado y ventrículos afectados)].
+    * En comparación con el estudio previo de [fecha], el SEGA [ha permanecido estable en tamaño y características / ha mostrado crecimiento, midiendo previamente (dimensiones previas) / es de nueva aparición].]
+
+* **Anomalías de la Sustancia Blanca (AMB):**
+    * Se observan [escasas/moderadas/numerosas] anomalías de la sustancia blanca consistentes en:
+        * Líneas de migración radial [describir localización y extensión, ej: extendiéndose desde los ventrículos hacia la corteza en lóbulos frontales].
+        * Lesiones [nodulares/mal definidas/quísticas] de sustancia blanca [describir localización y características de señal].
+    * Estos hallazgos [permanecen estables / sin cambios significativos] respecto al estudio previo.
+
+* **Sistema Ventricular y Espacios Subaracnoideos:**
+    * El sistema ventricular está [centrado y de tamaño normal / levemente dilatado / marcadamente dilatado].
+    * El acueducto de Silvio y los forámenes del cuarto ventrículo parecen [permeables / (describir si hay obstrucción)].
+    * Espacios subaracnoideos de amplitud [normal / aumentada / disminuida].
+
+* **Fosa Posterior:**
+    * [Cerebelo y tronco encefálico sin alteraciones significativas / Se observan túberes cerebelosos en (localización)].
+
+* **Otros Hallazgos:**
+    * [Describir cualquier otro hallazgo relevante, ej. ausencia de colecciones extraaxiales, estructuras de la línea media conservadas, etc.].
+
+**Impresión Diagnóstica:**
+
+1.  Hallazgos de RM cerebral compatibles con **Complejo de Esclerosis Tuberosa**, caracterizados por la presencia de múltiples túberes corticales/subcorticales, nódulos subependimarios y anomalías de la sustancia blanca, como se describe detalladamente arriba.
+2.  [Si hay SEGA]: **Astrocitoma Subependimario de Células Gigantes (SEGA)** en [localización] de aproximadamente [tamaño], con [características de realce y efecto sobre el sistema ventricular]. En comparación con el estudio previo de [fecha], esta lesión se encuentra [estable / en crecimiento / de nueva aparición].
+3.  [Si hay hidrocefalia]: **Hidrocefalia [obstructiva/no obstructiva]** secundaria a [causa, ej. SEGA].
+4.  [Otros puntos relevantes, ej. Carga lesional global (alta/moderada/baja)].
+5.  [Estabilidad / Progresión / Nueva aparición] de los hallazgos en comparación con el estudio previo de [fecha].
+
+**Recomendaciones:**
+* Correlacionar con la clínica y los criterios diagnósticos del CET.
+* Seguimiento por RM según las guías clínicas vigentes para CET, [especialmente para monitorizar el SEGA descrito / para vigilancia de posible desarrollo o crecimiento de SEGA].
+[Otras recomendaciones específicas si aplican].
+
+Dr./Dra. [Tu Nombre]
+Radiólogo/a Pediátrico/a
+            </div>
+            <div class="button-container mt-6">
+                 <button onclick="copyReport()" class="nav-button">Copiar Plantilla</button>
+                <button onclick="closeModal('reportModal')" class="nav-button secondary">Cerrar</button>
+                <button onclick="navigateTo(0); closeModal('reportModal');" class="nav-button">Reiniciar Guía</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentStep = 0;
+        const totalContentSteps = 7; // Pasos de contenido de 0 a 6
+
+        function showStep(stepNumber) {
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            const activeSection = document.getElementById(`step-${stepNumber}`);
+            if (activeSection) {
+                activeSection.classList.add('active');
+                // Actualiza el indicador de paso. Los pasos son 0-indexados internamente, pero se muestran como 1-indexados.
+                document.getElementById('step-indicator').innerText = `Paso ${stepNumber + 1} de ${totalContentSteps}`;
+                 window.scrollTo(0, 0); // Scroll to top
+            }
+        }
+
+        function navigateTo(stepNumber) {
+            // Asegura que el número de paso esté dentro de los límites de los pasos de contenido (0 a totalContentSteps - 1)
+            if (stepNumber >= 0 && stepNumber < totalContentSteps) {
+                currentStep = stepNumber;
+                showStep(currentStep);
+            }
+        }
+        
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = "block";
+            // Opcional: Cambiar el indicador de paso para el modal
+            document.getElementById('step-indicator').innerText = `Plantilla de Informe (Paso Final)`;
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = "none";
+            // Al cerrar el modal, restaura el indicador de paso al paso de contenido actual.
+            // currentStep no debería haber cambiado al abrir el modal.
+            showStep(currentStep); 
+        }
+
+        function copyReport() {
+            const reportText = document.getElementById('reportTemplate').innerText;
+            navigator.clipboard.writeText(reportText).then(() => {
+                alert('Plantilla de informe copiada al portapapeles.');
+            }).catch(err => {
+                console.error('Error al copiar la plantilla: ', err);
+                // Fallback por si navigator.clipboard no funciona en iframes o entornos restrictivos
+                try {
+                    const textArea = document.createElement("textarea");
+                    textArea.value = reportText;
+                    document.body.appendChild(textArea);
+                    textArea.focus();
+                    textArea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textArea);
+                    alert('Plantilla de informe copiada al portapapeles (fallback).');
+                } catch (e) {
+                    alert('No se pudo copiar la plantilla automáticamente. Por favor, selecciónala y cópiala manualmente.');
+                }
+            });
+        }
+
+        // Mostrar el primer paso (Bienvenida, step-0) al cargar
+        showStep(currentStep);
+
+        // Cerrar modal si se hace clic fuera del contenido
+        window.onclick = function(event) {
+            const modal = document.getElementById('reportModal');
+            if (event.target == modal) {
+                closeModal('reportModal');
+            }
+        }
+    </script>
+
+</body>
+</html>
