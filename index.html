@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía Paso a Paso: Ecografía de Cadera Neonatal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" integrity="sha384-wcIxkf4k55AIAnECRglkDFiXrqGKZOcbjex1GdBvdRVRmCRih+GEkWpFf4zV7PDU" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" integrity="sha384-hIoBPJpTUs74ddyc4bFZSM1gAUAzkxfS+L9PAlE3ksQPflPMSCexI3U0DHeEkKFT" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YSOVFjo36v29eRqNBvBFZXjscSJ1NBNlinePPOgvbrHlPKkEJLR7EWjB" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8; /* Light blue-gray background */
+        }
+        .content-section {
+            display: none;
+        }
+        .content-section.active {
+            display: block;
+        }
+        .nav-link {
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+        .nav-link.active, .nav-link:hover {
+            background-color: #e0e7ff; /* Light indigo */
+            color: #3730a3; /* Dark indigo */
+            border-left-color: #4f46e5; /* Indigo */
+        }
+        .section-title {
+            color: #1e3a8a; /* Dark blue */
+        }
+        .subsection-title {
+            color: #1d4ed8; /* Medium blue */
+        }
+        .tip-icon {
+            display: inline-flex; /* Changed to inline-flex for better alignment */
+            align-items: center;
+            justify-content: center;
+            width: 1.25rem;
+            height: 1.25rem;
+            margin-right: 0.5rem;
+            background-color: #fbbf24; /* Amber 400 */
+            border-radius: 50%;
+            font-weight: bold;
+            color: white;
+        }
+        .error-icon {
+            display: inline-flex; /* Changed to inline-flex for better alignment */
+            align-items: center;
+            justify-content: center;
+            width: 1.25rem;
+            height: 1.25rem;
+            margin-right: 0.5rem;
+            background-color: #f87171; /* Red 400 */
+            border-radius: 50%;
+            font-weight: bold;
+            color: white;
+        }
+        .reference-point {
+            border-left: 3px solid #60a5fa; /* Blue 400 */
+            padding-left: 0.75rem;
+            margin-bottom: 0.5rem;
+        }
+        /* KaTeX font size consistency */
+        .katex { 
+            font-size: 1.0em; /* Adjust if necessary */
+        }
+    </style>
+</head>
+<body class="flex flex-col md:flex-row min-h-screen">
+
+    <aside class="w-full md:w-64 bg-white shadow-lg md:min-h-screen p-4">
+        <h1 class="text-2xl font-bold text-center text-blue-700 mb-6 border-b pb-3">Eco Cadera: Guía</h1>
+        <nav id="sidebarNav">
+            <ul>
+                <li><a href="#preparacion" class="nav-link block py-2 px-3 rounded font-medium text-gray-700">1. Preparación y Equipo</a></li>
+                <li><a href="#estatica" class="nav-link block py-2 px-3 rounded font-medium text-gray-700">2. Evaluación Estática (Graf)</a></li>
+                <li><a href="#dinamica" class="nav-link block py-2 px-3 rounded font-medium text-gray-700">3. Evaluación Dinámica</a></li>
+                <li><a href="#consejos" class="nav-link block py-2 px-3 rounded font-medium text-gray-700">4. Consejos Clave</a></li>
+                <li><a href="#referencias" class="nav-link block py-2 px-3 rounded font-medium text-gray-700">5. Referencias</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main class="flex-1 p-6 md:p-10 bg-gray-50 overflow-y-auto">
+        
+        <section id="preparacion" class="content-section space-y-6">
+            <h2 class="text-3xl font-bold section-title">1. Preparación y Equipamiento</h2>
+            
+            <div>
+                <h3 class="text-xl font-semibold subsection-title mb-2">1.1. Preparación del Lactante</h3>
+                <ul class="list-disc list-inside text-gray-700 space-y-1 pl-4">
+                    <li>Asegurar que el lactante esté tranquilo y cómodo (idealmente alimentado, pañal limpio).</li>
+                    <li>Utilizar gel de ultrasonido tibio para evitar la incomodidad.</li> {/* CORREGIDO */}
+                    <li>Permitir la presencia de los padres para confortar al bebé.</li>
+                    <li>Evitar pañales muy apretados que fuercen extensión/aducción antes del examen.</li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="text-xl font-semibold subsection-title mb-2">1.2. Selección del Transductor y Ajustes del Ecógrafo</h3>
+                <ul class="list-disc list-inside text-gray-700 space-y-1 pl-4">
+                    <li><strong>Transductor:</strong> Lineal de alta frecuencia.
+                        <ul class="list-circle list-inside ml-6">
+                            <li>Neonatos y <3 meses: $\geq 7.5 \text{ MHz}$ (ej. $7-12 \text{ MHz}$ o $5-15 \text{ MHz}$).</li>
+                            <li>Lactantes >3 meses o mayor penetración: $5 \text{ MHz}$.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Ajustes del Ecógrafo:</strong>
+                        <ul class="list-circle list-inside ml-6">
+                            <li>Optimizar ganancia general y TGC.</li>
+                            <li>Foco a nivel de la articulación coxofemoral.</li>
+                            <li>Profundidad suficiente para incluir todas las estructuras (piel a porción medial del acetábulo y cabeza femoral).</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            
+            <div>
+                <h3 class="text-xl font-semibold subsection-title mb-2">1.3. Posicionamiento del Paciente (Método de Graf)</h3>
+                <ul class="list-disc list-inside text-gray-700 space-y-1 pl-4">
+                    <li><strong>Posición:</strong> Decúbito lateral estricto, cadera a explorar hacia arriba.</li>
+                    <li><strong>Soporte:</strong> Uso de cuna de Graf o sistema similar (toallas enrolladas, cojines) es altamente recomendable para estabilizar la pelvis y facilitar la perpendicularidad del transductor.</li>
+                    <li><strong>Pierna Examinada:</strong> Flexión ligera ($15-20^\circ$ de cadera), aducción y rotación neutra o muy leve rotación medial para el plano coronal estándar de Graf.</li>
+                </ul>
+                <p class="mt-3 p-3 bg-blue-50 border-l-4 border-blue-500 text-blue-700 rounded">
+                    <span class="tip-icon">💡</span><strong>Consejo:</strong> La correcta estabilización del paciente es clave para evitar errores de angulación y rotación que invalidan las mediciones.
+                </p>
+            </div>
+        </section>
+
+        <section id="estatica" class="content-section space-y-6">
+            <h2 class="text-3xl font-bold section-title">2. Evaluación Estática: Método de Graf</h2>
+            <p class="text-gray-600">Evaluación morfológica de la cadera mediante ángulos específicos en un plano coronal estandarizado.</p>
+
+            <div>
+                <h3 class="text-xl font-semibold subsection-title mb-2">2.1. Obtención del Plano Coronal Estándar de Graf</h3>
+                 <ul class="list-disc list-inside text-gray-700 space-y-1 pl-4">
+                    <li><strong>Posición del Transductor:</strong> Sobre la cara lateral de la cadera (nivel del trocánter mayor). Realizar una ligera rotación del borde superior del transductor hacia posterior (aprox. $10-15^\circ$) hasta que la línea del hueso ilíaco aparezca recta, continua y horizontal.</li>
+                    <li><strong>Profundidad del Plano:</strong> Debe pasar por la porción media o más profunda del acetábulo óseo, idealmente visualizando el cartílago trirradiado (hipoecoico).</li>
+                </ul>
+                
+                <h4 class="text-lg font-semibold text-gray-800 mt-4 mb-2">Puntos de Referencia Anatómicos Clave (Checklist de Graf):</h4>
+                <p class="text-gray-600 mb-3">Todos deben ser claramente identificables para una imagen válida.</p>
+                <div class="space-y-2">
+                    <div class="reference-point"><strong class="text-gray-900">Borde inferior del ilion:</strong> Eco lineal brillante y nítido en la profundidad de la fosa acetabular. Indica profundidad correcta.</div>
+                    <div class="reference-point"><strong class="text-gray-900">Promontorio óseo (Bony rim):</strong> Punto más lateral del techo acetabular óseo. Referencia principal para ángulos. Angular en cadera madura; redondeado/aplanado en inmaduras/displásicas.</div>
+                    <div class="reference-point"><strong class="text-gray-900">Labrum acetabular:</strong> Estructura triangular hiperecogénica en el borde del acetábulo cartilaginoso. Fundamental para ángulo beta.</div>
+                    <div class="reference-point"><strong class="text-gray-900">Techo acetabular óseo:</strong> Porción osificada del acetábulo. Su inclinación es evaluada por el ángulo alfa.</div>
+                    <div class="reference-point"><strong class="text-gray-900">Techo acetabular cartilaginoso:</strong> Porción cartilaginosa que completa la cobertura.</div>
+                    <div class="reference-point"><strong class="text-gray-900">Cabeza femoral:</strong> Redondeada, hipoecoica (cartilaginosa), puede tener núcleo de osificación ecogénico.</div>
+                    <div class="reference-point"><strong class="text-gray-900">Unión condro-ósea:</strong> Transición ilion-cartílago trirradiado en profundidad. Punto medial para línea del techo óseo.</div>
+                </div>
+                <p class="mt-3 p-3 bg-yellow-50 border-l-4 border-yellow-500 text-yellow-700 rounded">
+                    <span class="error-icon">⚠️</span><strong>Error Común:</strong> No visualizar claramente el borde inferior del ilion debido a un plano superficial o incorrecta oblicuidad. Asegurar profundidad y angulación adecuadas.
+                </p>
+            </div>
+
+            <div>
+                <h3 class="text-xl font-semibold subsection-title mb-2">2.2. Medición de Ángulos Alfa ($\alpha$) y Beta ($\beta$)</h3>
+                <p class="text-gray-600 mb-2">Trazar tres líneas fundamentales:</p>
+                <ul class="list-decimal list-inside text-gray-700 space-y-1 pl-4">
+                    <li><strong>Línea Base (Ilíaca):</strong> A lo largo de la cortical externa del ilion, paralela a su eje largo.</li>
+                    <li><strong>Línea del Techo Óseo:</strong> Desde el promontorio óseo hasta el borde inferior del ilion/unión condro-ósea.</li>
+                    <li><strong>Línea del Techo Cartilaginoso:</strong> Desde el promontorio óseo hasta el centro del labrum.</li>
+                </ul>
+                <p class="mt-2 text-gray-700"><strong>Ángulo Alfa ($\alpha$):</strong> Entre Línea Base y Línea del Techo Óseo. Indica desarrollo del techo óseo. Normal: $\geq 60^{\circ}$.</p>
+                <p class="text-gray-700"><strong>Ángulo Beta ($\beta$):</strong> Entre Línea Base y Línea del Techo Cartilaginoso. Refleja cobertura cartilaginosa y posición del labrum. Normal: típicamente $< 55^{\circ}$.</p>
+                <p class="mt-3 p-3 bg-blue-50 border-l-4 border-blue-500 text-blue-700 rounded">
+                    <span class="tip-icon">💡</span><strong>Consejo:</strong> La precisión en la colocación de los cursores para trazar las líneas es crucial. Las tres líneas raramente se cruzan en un único punto.
+                </p>
+            </div>
+
+            <div>
+                <h3 class="text-xl font-semibold subsection-title mb-2">2.3. Medición de Cobertura de Cabeza Femoral (%FHC)</h3>
+                <ul class="list-disc list-inside text-gray-700 space-y-1 pl-4">
+                    <li>Realizar en plano coronal estándar de Graf.</li>
+                    <li><strong>Cálculo:</strong> $\%FHC = (d/D) \times 100$
+                        <ul class="list-circle list-inside ml-6">
+                            <li>$D$: Diámetro máximo de la cabeza femoral perpendicular a la línea base ilíaca.</li>
+                            <li>$d$: Porción de $D$ cubierta por el techo acetabular óseo (medial a línea vertical desde promontorio).</li>
+                        </ul>
+                    </li>
+                    <li><strong>Valores Normales:</strong> $> 50-58\%$. Una cobertura $< 50\%$ es deficiente.</li>
+                </ul>
+            </div>
+             <div>
+                <h3 class="text-xl font-semibold subsection-title mb-2">2.4. Imágenes a Adquirir (Estática)</h3>
+                 <ul class="list-disc list-inside text-gray-700 space-y-1 pl-4">
+                    <li>Imágenes de alta calidad del plano coronal estándar para AMBAS caderas.</li>
+                    <li>Incluir imágenes CON y SIN las líneas y mediciones angulares.</li>
+                    <li>Etiquetar correctamente lateralidad (Derecha/Izquierda).</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="dinamica" class="content-section space-y-6">
+            <h2 class="text-3xl font-bold section-title">3. Evaluación Dinámica: Maniobras de Estrés</h2>
+            <p class="text-gray-600">Complementa la evaluación estática valorando la estabilidad articular. Realizar siempre con suavidad.</p>
+
+            <div>
+                <h3 class="text-xl font-semibold subsection-title mb-2">3.1. Planos de Exploración para Evaluación Dinámica</h3>
+                <ul class="list-disc list-inside text-gray-700 space-y-1 pl-4">
+                    <li><strong>Plano Coronal en Flexión (similar a Graf, con estrés):</strong> Aplicar estrés suave (empuje posterior o Barlow/Ortolani) observando desplazamientos o cambios en el labrum.</li>
+                    <li><strong>Plano Transversal en Flexión (Método de Harcke):</strong>
+                        <ul class="list-circle list-inside ml-6">
+                            <li><strong>Posición:</strong> Cadera y rodilla flexionadas a $90^\circ$.</li>
+                            <li><strong>Transductor:</strong> Región posterolateral de la cadera, paralelo al eje del fémur.</li>
+                            <li><strong>Visualización:</strong> Movimiento de cabeza femoral en relación con isquion (posterior) y pubis (anterior).</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            
+            <div>
+                <h3 class="text-xl font-semibold subsection-title mb-2">3.2. Maniobras de Estrés</h3>
+                <div class="space-y-4">
+                    <div>
+                        <h4 class="text-lg font-semibold text-gray-800">Maniobra de Barlow (Estrés Posterior)</h4>
+                        <ul class="list-disc list-inside text-gray-700 space-y-1 pl-4">
+                            <li><strong>Realización:</strong> Cadera flexionada $90^\circ$, aducción, suave presión posterior sobre rodilla/muslo.</li>
+                            <li><strong>Qué buscar:</strong> Desplazamiento posterior y/o lateral de la cabeza femoral. Aumento del espacio cabeza-fondo acetabular.</li>
+                            <li><strong>Qué aporta:</strong> Identifica caderas luxables o subluxables.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-semibold text-gray-800">Maniobra de Ortolani (Reducción)</h4>
+                        <ul class="list-disc list-inside text-gray-700 space-y-1 pl-4">
+                            <li><strong>Realización:</strong> Si cadera luxada (espontánea o post-Barlow), abducción suave y progresiva, ligera tracción anterior/elevación del trocánter.</li>
+                            <li><strong>Qué buscar:</strong> Retorno visible de la cabeza femoral a posición concéntrica.</li>
+                            <li><strong>Qué aporta:</strong> Confirma reductibilidad de una cadera luxada.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-semibold text-gray-800">Maniobra de Pistón (Push-Pull / Telescopaje) - Opcional</h4>
+                        <ul class="list-disc list-inside text-gray-700 space-y-1 pl-4">
+                            <li><strong>Realización:</strong> Cadera en neutro o ligera flexión, suave tracción y compresión axial a lo largo del fémur.</li>
+                            <li><strong>Qué buscar:</strong> Movimiento de "pistoneo" excesivo de la cabeza femoral (craneo-caudal).</li>
+                            <li><strong>Qué aporta:</strong> Evalúa laxitud capsular general.</li>
+                        </ul>
+                    </div>
+                </div>
+                 <p class="mt-3 p-3 bg-yellow-50 border-l-4 border-yellow-500 text-yellow-700 rounded">
+                    <span class="error-icon">⚠️</span><strong>Precaución Importante:</strong>
+                    <ul class="list-disc list-inside ml-4">
+                        <li>Realizar TODAS las maniobras con extrema suavidad.</li>
+                        <li>NO realizar si el paciente está en tratamiento (ej. Arnés de Pavlik) a menos que sea solicitado.</li>
+                        <li>NO realizar si hay luxación evidente en reposo o FHC $<25\%$ en la evaluación estática.</li>
+                    </ul>
+                </p>
+            </div>
+
+            <div>
+                <h3 class="text-xl font-semibold subsection-title mb-2">3.3. Signos Ecográficos de Inestabilidad</h3>
+                <ul class="list-disc list-inside text-gray-700 space-y-1 pl-4">
+                    <li><strong>Subluxación:</strong> Desplazamiento parcial de la cabeza femoral, manteniendo algún contacto.</li>
+                    <li><strong>Luxación:</strong> Pérdida completa de contacto entre cabeza femoral y acetábulo.</li>
+                    <li><strong>Reductibilidad:</strong> Capacidad de recolocar una cabeza luxada.</li>
+                    <li><strong>Laxitud:</strong> Movimiento excesivo sin subluxación/luxación clara.</li>
+                </ul>
+            </div>
+             <div>
+                <h3 class="text-xl font-semibold subsection-title mb-2">3.4. Imágenes a Adquirir (Dinámica)</h3>
+                 <ul class="list-disc list-inside text-gray-700 space-y-1 pl-4">
+                    <li>Clips de vídeo (cine-loops) de las maniobras de estrés en los planos relevantes.</li>
+                    <li>Etiquetar correctamente lateralidad y tipo de maniobra.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="consejos" class="content-section space-y-6">
+            <h2 class="text-3xl font-bold section-title">4. Consejos Clave y Errores a Evitar</h2>
+            <p class="text-gray-600">La calidad de la ecografía de cadera es altamente dependiente del operador.</p>
+            
+            <div class="space-y-4">
+                <div class="p-4 bg-blue-50 border-l-4 border-blue-500 rounded">
+                    <h4 class="font-semibold text-blue-700"><span class="tip-icon">💡</span>Optimización de la Adquisición:</h4>
+                    <ul class="list-disc list-inside text-gray-700 space-y-1 pl-6 mt-2">
+                        <li>Mantener al lactante tranquilo, caliente y cómodo.</li>
+                        <li>Aplicar presión mínima con el transductor.</li>
+                        <li>Asegurar perpendicularidad del transductor para el plano de Graf.</li>
+                        <li>Utilizar suficiente gel tibio.</li>
+                    </ul>
+                </div>
+
+                <div class="p-4 bg-yellow-50 border-l-4 border-yellow-500 rounded">
+                    <h4 class="font-semibold text-yellow-700"><span class="error-icon">⚠️</span>Errores Comunes en Plano de Graf:</h4>
+                     <ul class="list-disc list-inside text-gray-700 space-y-1 pl-6 mt-2">
+                        <li><strong>Inclinación Anterior del Transductor:</strong> Puede aumentar falsamente el ángulo $\alpha$. La línea ilíaca puede curvarse hacia arriba.</li>
+                        <li><strong>Inclinación Posterior del Transductor:</strong> Puede aplanar falsamente el techo óseo (disminuyendo $\alpha$) y redondear el promontorio.</li>
+                        <li><strong>Plano de corte incorrecto:</strong> No visualizar todos los puntos de referencia (ilion recto, promontorio nítido, labrum, borde inferior del ilion). Revisar la "Checklist de Graf" mentalmente.</li>
+                        <li><strong>Identificación errónea de puntos:</strong> Confundir promontorio con espícula, labrum con pliegue sinovial.</li>
+                        <li><strong>Medición incorrecta de ángulos:</strong> Colocación imprecisa de cursores.</li>
+                    </ul>
+                </div>
+                <div class="p-4 bg-blue-50 border-l-4 border-blue-500 rounded">
+                    <h4 class="font-semibold text-blue-700"><span class="tip-icon">💡</span>Documentación:</h4>
+                     <ul class="list-disc list-inside text-gray-700 space-y-1 pl-6 mt-2">
+                        <li>Guardar imágenes estáticas de alta calidad (con y sin mediciones) del plano de Graf para AMBAS caderas.</li>
+                        <li>Guardar cine-loops de la evaluación dinámica.</li>
+                        <li>Etiquetar correctamente lateralidad y vistas/maniobras.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="referencias" class="content-section">
+            <h2 class="text-3xl font-bold section-title">5. Referencias</h2>
+            <p class="text-gray-600 mt-4">
+                Este espacio está reservado para incluir las referencias bibliográficas pertinentes.
+                El contenido de las referencias debe ser añadido manually según las fuentes consultadas para la elaboración de esta guía o las que se deseen citar.
+            </p>
+            <div class="mt-4 p-4 border border-dashed border-gray-300 rounded-md min-h-[200px] text-gray-500">
+                (Listar aquí las referencias, por ejemplo: <br>
+                1. Graf R. Guide to Sonography of the Infant Hip. Thieme; 2006. <br>
+                2. Rosendahl K, et al. ... )
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navLinks = document.querySelectorAll('#sidebarNav .nav-link');
+            const contentSections = document.querySelectorAll('.content-section');
+
+            // Function to render math if KaTeX is loaded
+            function renderMath() {
+                if (window.renderMathInElement) {
+                    renderMathInElement(document.body, {
+                        delimiters: [
+                            {left: "$$", right: "$$", display: true},
+                            {left: "$", right: "$", display: false},
+                            {left: "\\(", right: "\\)", display: false},
+                            {left: "\\[", right: "\\]", display: true}
+                        ]
+                    });
+                }
+            }
+
+            function updateActiveSection() {
+                let currentSectionId = window.location.hash || '#preparacion';
+                // Ensure a default section if hash is empty or just '#'
+                if (currentSectionId === '#' || !document.querySelector(currentSectionId)) {
+                    currentSectionId = '#preparacion';
+                    // Optionally, update the hash in URL if it was invalid/empty
+                    if (window.location.hash !== currentSectionId) {
+                         window.location.hash = currentSectionId;
+                    }
+                }
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === currentSectionId) {
+                        link.classList.add('active');
+                    }
+                });
+
+                contentSections.forEach(section => {
+                    section.classList.remove('active');
+                    if ('#' + section.id === currentSectionId) {
+                        section.classList.add('active');
+                    }
+                });
+            }
+            
+            // No need for explicit click listeners on navLinks if we rely on hashchange
+            // The browser handles changing the hash on click by default.
+
+            window.addEventListener('hashchange', updateActiveSection);
+            
+            // Initial load
+            updateActiveSection();
+            // Render math after initial content setup
+            renderMath(); 
+        });
+    </script>
+
+</body>
+</html>
