@@ -98,6 +98,7 @@
             padding: 0.75rem 1.5rem; /* py-3 px-6 */
             border-radius: 0.375rem; /* rounded-md */
             transition: background-color 0.3s;
+            cursor: pointer;
         }
         .nav-button:hover {
             background-color: #2563eb; /* hover:bg-blue-600 */
@@ -132,9 +133,74 @@
             color: #1f2937; /* text-gray-800 */
             margin-top: 1rem; /* mt-4 */
         }
+        /* Estilos para la barra de navegación */
+        .navbar {
+            background-color: #1f2937; /* bg-gray-800 */
+            padding: 0.5rem 1rem; /* py-2 px-4 */
+            border-radius: 0.375rem; /* rounded-md */
+            margin-bottom: 1.5rem; /* mb-6 */
+        }
+        .navbar-item {
+            color: #d1d5db; /* text-gray-300 */
+            padding: 0.5rem 0.75rem; /* py-2 px-3 */
+            margin: 0 0.25rem; /* mx-1 */
+            border-radius: 0.25rem; /* rounded-sm */
+            transition: background-color 0.3s, color 0.3s;
+            cursor: pointer;
+            font-size: 0.875rem;
+        }
+        .navbar-item:hover {
+            background-color: #3b82f6; /* bg-blue-500 */
+            color: white;
+        }
+        .navbar-item.active-nav {
+            background-color: #2563eb; /* bg-blue-600 */
+            color: white;
+            font-weight: 600;
+        }
+        .mobile-menu-button {
+            display: none; /* Oculto por defecto */
+        }
+        .mobile-nav-menu {
+            display: none; /* Oculto por defecto */
+        }
+
+        @media (max-width: 768px) { /* md breakpoint */
+            .desktop-nav-menu {
+                display: none; /* Ocultar menú de escritorio en móviles */
+            }
+            .mobile-menu-button {
+                display: block; /* Mostrar botón de hamburguesa en móviles */
+                background-color: #3b82f6;
+                color: white;
+                padding: 0.5rem;
+                border-radius: 0.25rem;
+                cursor: pointer;
+            }
+            .mobile-nav-menu {
+                 /* Se mostrará/ocultará con JS */
+                background-color: #374151; /* bg-gray-700 */
+                position: absolute;
+                top: 55px; /* Ajustar según altura del header/navbar */
+                left: 0;
+                right: 0;
+                z-index: 50;
+                border-radius: 0 0 0.375rem 0.375rem;
+            }
+            .mobile-nav-menu .navbar-item {
+                display: block;
+                width: 100%;
+                text-align: left;
+                padding: 0.75rem 1rem;
+                border-bottom: 1px solid #4b5563; /* border-gray-600 */
+            }
+            .mobile-nav-menu .navbar-item:last-child {
+                border-bottom: none;
+            }
+        }
     </style>
 </head>
-<body class="bg-gray-100 min-h-screen flex flex-col items-center justify-center p-4">
+<body class="bg-gray-100 min-h-screen flex flex-col items-center p-4">
 
     <div class="bg-white p-6 sm:p-8 rounded-lg shadow-xl w-full max-w-3xl">
         <header class="text-center mb-6">
@@ -142,7 +208,39 @@
             <p class="text-gray-600 mt-2">Una herramienta paso a paso para radiólogos pediátricos.</p>
         </header>
 
-        <div id="step-indicator" class="step-indicator">Paso 1 de 7</div>
+        <!-- Barra de Navegación -->
+        <nav class="navbar relative">
+            <!-- Botón de Menú Móvil -->
+            <button id="mobileMenuButton" class="mobile-menu-button md:hidden">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+
+            <!-- Menú de Escritorio -->
+            <div id="desktopNavMenu" class="desktop-nav-menu flex flex-wrap justify-center">
+                <span class="navbar-item" onclick="navigateTo(0)">Bienvenida</span>
+                <span class="navbar-item" onclick="navigateTo(1)">Protocolo</span>
+                <span class="navbar-item" onclick="navigateTo(2)">Túberes</span>
+                <span class="navbar-item" onclick="navigateTo(3)">SEN</span>
+                <span class="navbar-item" onclick="navigateTo(4)">SEGA</span>
+                <span class="navbar-item" onclick="navigateTo(5)">AMB</span>
+                <span class="navbar-item" onclick="navigateTo(6)">Checklist</span>
+                <span class="navbar-item" onclick="openModal('reportModal')">Informe</span>
+            </div>
+            
+            <!-- Menú Móvil (Desplegable) -->
+            <div id="mobileNavMenu" class="mobile-nav-menu hidden md:hidden">
+                <span class="navbar-item" onclick="navigateTo(0); toggleMobileMenu();">Bienvenida</span>
+                <span class="navbar-item" onclick="navigateTo(1); toggleMobileMenu();">Protocolo</span>
+                <span class="navbar-item" onclick="navigateTo(2); toggleMobileMenu();">Túberes</span>
+                <span class="navbar-item" onclick="navigateTo(3); toggleMobileMenu();">SEN</span>
+                <span class="navbar-item" onclick="navigateTo(4); toggleMobileMenu();">SEGA</span>
+                <span class="navbar-item" onclick="navigateTo(5); toggleMobileMenu();">AMB</span>
+                <span class="navbar-item" onclick="navigateTo(6); toggleMobileMenu();">Checklist</span>
+                <span class="navbar-item" onclick="openModal('reportModal'); toggleMobileMenu();">Informe</span>
+            </div>
+        </nav>
+
+        <div id="step-indicator" class="step-indicator text-center">Paso 1 de 7</div>
 
         <!-- Paso 0: Bienvenida -->
         <div id="step-0" class="content-section active">
@@ -505,7 +603,30 @@ Radiólogo/a Pediátrico/a
 
     <script>
         let currentStep = 0;
-        const totalContentSteps = 7; // Pasos de contenido de 0 a 6
+        const totalContentSteps = 7; // Pasos de contenido de 0 a 6 (Bienvenida a Checklist)
+
+        function updateActiveNavItem(stepNumber) {
+            // Eliminar clase activa de todos los items de navegación
+            document.querySelectorAll('.navbar-item').forEach(item => {
+                item.classList.remove('active-nav');
+            });
+
+            // Añadir clase activa al item correspondiente
+            // Los items del menú de escritorio y móvil tienen la misma lógica de onclick
+            // por lo que podemos seleccionar por el contenido o un atributo data si fuera necesario.
+            // Aquí, seleccionamos por el índice aproximado, asumiendo que el orden es el mismo.
+            const navItems = document.querySelectorAll('#desktopNavMenu .navbar-item, #mobileNavMenu .navbar-item');
+            if (stepNumber < totalContentSteps) { // Para los pasos de contenido
+                 if(navItems[stepNumber]) navItems[stepNumber].classList.add('active-nav');
+                 // Para el menú móvil, también el que corresponde al modal
+                 if(navItems[stepNumber + (totalContentSteps +1)]) navItems[stepNumber + (totalContentSteps +1)].classList.add('active-nav');
+
+            } else { // Para el modal (plantilla de informe)
+                if(navItems[totalContentSteps]) navItems[totalContentSteps].classList.add('active-nav'); // Último item del menú de escritorio
+                 if(navItems[totalContentSteps + (totalContentSteps +1)]) navItems[totalContentSteps + (totalContentSteps +1)].classList.add('active-nav'); // Último item del menú móvil
+            }
+        }
+
 
         function showStep(stepNumber) {
             document.querySelectorAll('.content-section').forEach(section => {
@@ -514,14 +635,13 @@ Radiólogo/a Pediátrico/a
             const activeSection = document.getElementById(`step-${stepNumber}`);
             if (activeSection) {
                 activeSection.classList.add('active');
-                // Actualiza el indicador de paso. Los pasos son 0-indexados internamente, pero se muestran como 1-indexados.
                 document.getElementById('step-indicator').innerText = `Paso ${stepNumber + 1} de ${totalContentSteps}`;
-                 window.scrollTo(0, 0); // Scroll to top
+                updateActiveNavItem(stepNumber);
+                window.scrollTo(0, 0); 
             }
         }
 
         function navigateTo(stepNumber) {
-            // Asegura que el número de paso esté dentro de los límites de los pasos de contenido (0 a totalContentSteps - 1)
             if (stepNumber >= 0 && stepNumber < totalContentSteps) {
                 currentStep = stepNumber;
                 showStep(currentStep);
@@ -530,14 +650,12 @@ Radiólogo/a Pediátrico/a
         
         function openModal(modalId) {
             document.getElementById(modalId).style.display = "block";
-            // Opcional: Cambiar el indicador de paso para el modal
             document.getElementById('step-indicator').innerText = `Plantilla de Informe (Paso Final)`;
+            updateActiveNavItem(totalContentSteps); // Marcar "Informe" como activo
         }
 
         function closeModal(modalId) {
             document.getElementById(modalId).style.display = "none";
-            // Al cerrar el modal, restaura el indicador de paso al paso de contenido actual.
-            // currentStep no debería haber cambiado al abrir el modal.
             showStep(currentStep); 
         }
 
@@ -547,7 +665,6 @@ Radiólogo/a Pediátrico/a
                 alert('Plantilla de informe copiada al portapapeles.');
             }).catch(err => {
                 console.error('Error al copiar la plantilla: ', err);
-                // Fallback por si navigator.clipboard no funciona en iframes o entornos restrictivos
                 try {
                     const textArea = document.createElement("textarea");
                     textArea.value = reportText;
@@ -562,6 +679,13 @@ Radiólogo/a Pediátrico/a
                 }
             });
         }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileNavMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        document.getElementById('mobileMenuButton').addEventListener('click', toggleMobileMenu);
 
         // Mostrar el primer paso (Bienvenida, step-0) al cargar
         showStep(currentStep);
