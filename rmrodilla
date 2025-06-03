@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía Práctica de RM de Rodilla Pediátrica</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        table {
+            border-collapse: separate;
+            border-spacing: 0;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #e2e8f0; /* slate-200 */
+            padding: 12px; /* p-3 */
+            text-align: left;
+            font-size: 0.875rem; /* text-sm */
+        }
+        th {
+            background-color: #f1f5f9; /* slate-100 */
+            font-weight: 600; /* font-semibold */
+            color: #1e293b; /* slate-800 */
+        }
+        tr:nth-child(even) td {
+            background-color: #f8fafc; /* slate-50 */
+        }
+        h1, h2, h3, h4 {
+            color: #1e3a8a; /* blue-800 */
+        }
+        h1 {
+            font-size: 2.25rem; /* text-4xl */
+            font-weight: 700; /* font-bold */
+            margin-bottom: 1.5rem; /* mb-6 */
+        }
+        h2 {
+            font-size: 1.875rem; /* text-3xl */
+            font-weight: 600; /* font-semibold */
+            margin-top: 2rem; /* mt-8 */
+            margin-bottom: 1rem; /* mb-4 */
+            border-bottom: 2px solid #93c5fd; /* blue-300 */
+            padding-bottom: 0.5rem; /* pb-2 */
+        }
+        h3 {
+            font-size: 1.5rem; /* text-2xl */
+            font-weight: 600; /* font-semibold */
+            margin-top: 1.5rem; /* mt-6 */
+            margin-bottom: 0.75rem; /* mb-3 */
+            color: #1d4ed8; /* blue-700 */
+        }
+        h4 {
+            font-size: 1.25rem; /* text-xl */
+            font-weight: 600; /* font-semibold */
+            margin-top: 1.25rem; /* mt-5 */
+            margin-bottom: 0.5rem; /* mb-2 */
+            color: #1e40af; /* blue-700 */
+        }
+        p, li {
+            color: #334155; /* slate-700 */
+            line-height: 1.75; /* leading-relaxed */
+            margin-bottom: 1rem; /* mb-4 */
+        }
+        ul {
+            list-style-type: disc;
+            margin-left: 1.5rem; /* ml-6 */
+            margin-bottom: 1rem; /* mb-4 */
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem; /* p-8 */
+        }
+        .table-container {
+            overflow-x: auto;
+            margin-top: 1.5rem; /* mt-6 */
+            border-radius: 0.5rem; /* rounded-lg */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
+        }
+        .action-button { /* Renamed from export-button for general use */
+            background-color: #2563eb; /* blue-600 */
+            color: white;
+            padding: 0.75rem 1.5rem; /* py-3 px-6 */
+            border-radius: 0.375rem; /* rounded-md */
+            font-weight: 600; /* font-semibold */
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 1rem; /* mt-4 */
+            margin-bottom: 1rem; /* mb-4 */
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+        }
+        .action-button:hover {
+            background-color: #1d4ed8; /* blue-700 */
+        }
+        .collapsible-button {
+            background-color: #e0e7ff; /* indigo-100 */
+            color: #1e3a8a; /* blue-800 */
+            padding: 0.75rem 1.25rem;
+            border: 1px solid #c7d2fe; /* indigo-200 */
+            border-radius: 0.375rem; /* rounded-md */
+            font-weight: 600; /* font-semibold */
+            width: 100%;
+            text-align: left;
+            cursor: pointer;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .collapsible-button:hover {
+            background-color: #c7d2fe; /* indigo-200 */
+        }
+        .collapsible-content {
+            padding: 0 1rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background-color: #f9fafb; /* gray-50 */
+            border: 1px solid #e5e7eb; /* gray-200 */
+            border-top: none;
+            border-radius: 0 0 0.375rem 0.375rem; /* rounded-b-md */
+        }
+        .collapsible-content.open {
+           /* max-height will be set by JS */
+        }
+        .arrow {
+            transition: transform 0.3s ease;
+        }
+        .arrow.open {
+            transform: rotate(90deg);
+        }
+        .report-template-container {
+            background-color: #1f2937; /* gray-800 */
+            color: #d1d5db; /* gray-300 */
+            padding: 1.5rem;
+            border-radius: 0.5rem; /* rounded-lg */
+            overflow-x: auto;
+            margin-top: 1rem;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.875rem; /* text-sm */
+            line-height: 1.6;
+        }
+        .report-template-container pre {
+            white-space: pre-wrap; /* Allow wrapping */
+            word-wrap: break-word; /* Break long words */
+        }
+        .copy-button-container {
+            text-align: right;
+            margin-bottom: 1rem;
+        }
+        .toast-message {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #10b981; /* green-500 */
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        .toast-message.show {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+    <div class="container mx-auto p-4 md:p-8">
+        <header class="text-center mb-10">
+            <h1 class="text-3xl md:text-4xl font-bold text-blue-700">Guía Práctica de Resonancia Magnética de Rodilla Pediátrica</h1>
+            <p class="text-lg text-slate-600">Protocolos, Hallazgos Comunes y Plantilla de Informe</p>
+        </header>
+
+        <main>
+            <section id="introduccion">
+                <h2>I. Introducción a la Resonancia Magnética (RM) de Rodilla Pediátrica</h2>
+                <p>La resonancia magnética (RM) se ha consolidado como una herramienta diagnóstica fundamental en la evaluación del dolor y la patología de rodilla en la población pediátrica. Su superior contraste de tejidos blandos, capacidad multiplanar y ausencia de radiación ionizante la convierten en la modalidad de elección para una amplia gama de indicaciones clínicas. Las indicaciones comunes para la RM de rodilla en niños incluyen la evaluación de trastornos internos postraumáticos, dolor persistente de origen no claro y la caracterización adicional de anomalías detectadas en estudios radiográficos previos.</p>
+                <p>La interpretación de la RM de rodilla en niños presenta desafíos únicos que la distinguen significativamente de la evaluación en adultos. El esqueleto en desarrollo se caracteriza por la presencia de fisis abiertas (placas de crecimiento), que representan puntos de menor resistencia y predisponen a patrones de lesión específicos. Además, la señal de la médula ósea y las características del cartílago experimentan una evolución constante con la edad y la maduración esquelética. Existen también variantes normales del desarrollo que pueden simular patología si no se reconocen adecuadamente. Es crucial comprender que la rodilla pediátrica no es simplemente una "rodilla de adulto en miniatura"; su naturaleza dinámica implica que la "normalidad" en RM es un espectro dependiente de la edad y la madurez esquelética. Esta variabilidad inherente exige un enfoque interpretativo distinto al de la RM musculoesquelética en adultos, con una constante referencia a los patrones de desarrollo específicos para la edad para evitar errores diagnósticos. Las enfermedades que afectan a los niños pueden ser completamente diferentes a las de los adultos o manifestarse de manera distinta. Por lo tanto, una correcta interpretación requiere una familiaridad profunda con estos patrones evolutivos.</p>
+                <p>El incremento en el uso de la RM en pediatría se ve impulsado por sus ventajas inherentes, pero también plantea la necesidad de una cuidadosa optimización de los protocolos. Esto es especialmente relevante para manejar los tiempos de adquisición, que pueden ser prolongados, y la frecuente necesidad de sedación en niños más pequeños para asegurar estudios diagnósticos libres de artefactos de movimiento. La sensibilidad de los niños a la radiación ionizante hace que modalidades como la radiografía simple y la tomografía computarizada (TC), aunque útiles en contextos específicos, se utilicen con mayor cautela, priorizando la RM y la ecografía siempre que sea posible.</p>
+            </section>
+
+            <section id="consideraciones-tecnicas">
+                <h2>II. RM de Rodilla Pediátrica: Consideraciones Técnicas y Protocolos</h2>
+
+                <button type="button" class="collapsible-button">
+                    <span>A. Preparación del Paciente y Consideraciones Generales</span>
+                    <span class="arrow">&#9654;</span>
+                </button>
+                <div class="collapsible-content">
+                    <div class="p-4">
+                        <p>La preparación adecuada del paciente y la consideración de factores específicos de la edad son fundamentales para obtener estudios de RM de rodilla pediátrica de alta calidad.</p>
+                        <h4 class="text-xl font-semibold mt-4 mb-2 text-blue-600">Enfoques específicos para la edad, comunicación:</h4>
+                        <p>La comunicación debe adaptarse al nivel de desarrollo del niño para fomentar la cooperación y reducir la ansiedad. La creación de un entorno amigable para el niño y el uso de técnicas de simulación basadas en el juego pueden mejorar significativamente la experiencia del paciente y la calidad de las imágenes. La presencia de uno de los padres o un tutor durante el examen (en exploraciones sin sedación) puede ofrecer apoyo emocional al niño, siempre y cuando el acompañante también cumpla con los criterios de seguridad para RM.</p>
+                        <h4 class="text-xl font-semibold mt-4 mb-2 text-blue-600">Sedación: Indicaciones, consideraciones e impacto en los protocolos:</h4>
+                        <p>Los niños más pequeños (generalmente menores de 6-8 años, aunque varía según el niño y la institución) o aquellos con ansiedad significativa o claustrofobia pueden requerir sedación o anestesia general para garantizar un estudio inmóvil y diagnóstico. La sedación conlleva riesgos inherentes, como el compromiso de la vía aérea, y requiere personal especializado, una evaluación pre-sedación exhaustiva (incluyendo ayuno y examen de la vía aérea) y una monitorización continua durante y después del procedimiento. La necesidad de sedación impulsa el desarrollo y la adopción de protocolos de RM rápidos y secuencias resistentes al movimiento, con el objetivo de minimizar el tiempo de exploración. Por ejemplo, existen protocolos rápidos de RM para infecciones musculoesqueléticas que buscan eliminar el uso de contraste y minimizar la necesidad de anestesia. En situaciones donde el tiempo de sedación es limitado, los protocolos pueden necesitar ser abreviados, priorizando las secuencias más esenciales para el diagnóstico.</p>
+                        <h4 class="text-xl font-semibold mt-4 mb-2 text-blue-600">Papel de la imagen previa (Radiografías):</h4>
+                        <p>En general, se deben obtener radiografías simples antes de la RM en casos de traumatismo. Esto permite detectar fracturas, especialmente pequeñas avulsiones óseas que la RM podría pasar por alto, y proporcionan un contexto clínico y anatómico valioso. Los hallazgos de la RM siempre deben correlacionarse con las radiografías previas cuando estén disponibles. La TC puede ser útil para fracturas radiográficamente ocultas o cuerpos libres óseos si la RM está contraindicada o no es concluyente para estos hallazgos específicos. La ecografía es una herramienta valiosa para confirmar la presencia de derrame articular, particularmente en niños pequeños.</p>
+                    </div>
+                </div>
+
+                <button type="button" class="collapsible-button">
+                    <span>B. Protocolo de RM Inicial (Dolor/Trauma)</span>
+                    <span class="arrow">&#9654;</span>
+                </button>
+                <div class="collapsible-content">
+                    <div class="p-4">
+                        <p>La exploración de RM de rodilla pediátrica debe realizarse en tres planos ortogonales: sagital, coronal y axial.</p>
+                        <h4 class="text-xl font-semibold mt-4 mb-2 text-blue-600">Secuencias Centrales:</h4>
+                        <ul>
+                            <li><strong>Sagital:</strong>
+                                <ul>
+                                    <li>Densidad Protónica (DP) sin saturación grasa: Excelente para la morfología meniscal, la integridad de los ligamentos (especialmente los cruzados) y la anatomía general.</li>
+                                    <li>DP o T2 con saturación grasa (SG) (p.ej., T2 SG TSE, STIR): Fundamental para detectar edema en la médula ósea, tejidos blandos, ligamentos y derrame articular. STIR es particularmente útil para una supresión grasa homogénea, especialmente en presencia de artefactos de susceptibilidad.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Coronal:</strong>
+                                <ul>
+                                    <li>DP o T2 con SG: Evalúa meniscos (especialmente raíces y cuerpo), ligamentos colaterales, cartílago, lesiones fiseales y médula ósea.</li>
+                                    <li>T1 sin SG: Crucial para la evaluación de la médula ósea (conversión normal vs. infiltración patológica), anatomía ósea y fracturas sutiles.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Axial:</strong>
+                                <ul>
+                                    <li>DP o T2 con SG: Evalúa la articulación patelofemoral (cartílago, alineación, retináculos), el mecanismo extensor, los ligamentos cruzados (especialmente el LCP), la forma del cuerpo meniscal, las estructuras de la fosa poplítea y el derrame articular.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <h4 class="text-xl font-semibold mt-4 mb-2 text-blue-600">Parámetros Recomendados (adaptados al tamaño pediátrico):</h4>
+                        <ul>
+                            <li><strong>Grosor de Corte:</strong> Preferiblemente ≤3 mm para un detalle anatómico óptimo, aunque 4 mm es aceptable. Cortes más finos (p.ej., 2.5−3 mm) se utilizan con frecuencia.</li>
+                            <li><strong>Gap Intercorte:</strong> Mínimo, p.ej., 0.3−1 mm o 10% del grosor de corte, para evitar omitir lesiones pequeñas.</li>
+                            <li><strong>Campo de Visión (FOV):</strong> Adaptado al tamaño de la rodilla del niño (p.ej., 14−16 cm) para maximizar la resolución espacial.</li>
+                            <li><strong>Matriz:</strong> Una matriz más alta (p.ej., 320×256, 384×384, 416×256) para mejor resolución, equilibrada con la relación señal-ruido (SNR) y el tiempo de adquisición.</li>
+                            <li><strong>Antena:</strong> Esencial el uso de una antena de rodilla dedicada. Si están disponibles, se prefieren antenas pediátricas especializadas más pequeñas, especialmente para neonatos e infantes.</li>
+                            <li><strong>Intensidad del Campo Magnético:</strong> Se pueden utilizar equipos de 1.5T o 3T. Los equipos de 3T ofrecen mayor SNR, lo que potencialmente permite una mayor resolución o exploraciones más rápidas.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <button type="button" class="collapsible-button">
+                    <span>C. Secuencias Opcionales y Avanzadas</span>
+                    <span class="arrow">&#9654;</span>
+                </button>
+                <div class="collapsible-content">
+                    <div class="p-4">
+                        <p>La selección de secuencias opcionales o avanzadas depende en gran medida de la sospecha clínica principal y de la edad del niño.</p>
+                        <h4 class="text-xl font-semibold mt-4 mb-2 text-blue-600">Secuencias Isotrópicas 3D (p.ej., 3D FSE/TSE como SPACE/CUBE/VISTA, 3D GRE como SPGR, DESS):</h4>
+                        <ul>
+                            <li><strong>Utilidad:</strong> Permiten la adquisición de vóxeles isotrópicos submilimétricos y reconstrucciones multiplanares (MPR) a partir de una única adquisición, lo que puede reducir el tiempo de exploración y los artefactos. Son excelentes para la evaluación del cartílago, nervios y anatomía compleja.</li>
+                            <li>Las secuencias 3D FSE (p.ej., T2 Shuffling) pueden proporcionar múltiples contrastes a partir de una sola adquisición, lo que potencialmente agiliza los exámenes pediátricos.</li>
+                            <li>Las secuencias 3D GRE (p.ej., SPGR SG, excitación selectiva de agua) son excelentes para la evaluación del cartílago articular y fiseal.</li>
+                            <li><strong>Aporte:</strong> Mejoran la visualización de estructuras pequeñas u oblicuamente orientadas (ligamentos, desgarros meniscales, defectos cartilaginosos). Pueden reducir los efectos de volumen parcial. La capacidad de adquirir un único conjunto de datos volumétricos que puede ser reformateado en cualquier plano con alta resolución representa un avance significativo, especialmente en pediatría. Esto puede reducir considerablemente el tiempo total de exploración, disminuyendo potencialmente la necesidad de sedación y mejorando la eficiencia del flujo de trabajo, al tiempo que se mantiene o incluso se mejora la información diagnóstica para estructuras 3D complejas.</li>
+                        </ul>
+                        <h4 class="text-xl font-semibold mt-4 mb-2 text-blue-600">Secuencias Específicas para Cartílago (Mapeo Cuantitativo):</h4>
+                        <ul>
+                            <li><strong>Mapeo T2:</strong> Mide los tiempos de relajación T2, sensibles al contenido de agua y a la integridad de la matriz de colágeno; un T2 aumentado sugiere degeneración cartilaginosa temprana. Se utiliza rutinariamente en algunos centros para la investigación de la osteoartritis y tiene potencial para la evaluación de la Artritis Idiopática Juvenil (AIJ).</li>
+                            <li><strong>dGEMRIC (RM de cartílago con gadolinio retardado):</strong> Mide indirectamente el contenido de glicosaminoglicanos (GAG). Requiere contraste IV e imágenes retardadas. Validado para la evaluación de GAG, pero tiene limitaciones (contraste, tiempo). Su uso rutinario en pediatría es menos común debido al contraste y al tiempo de espera.</li>
+                            <li><strong>Mapeo T1rho:</strong> Sensible al contenido de proteoglicanos, útil para los cambios tempranos de la osteoartritis. Posibles problemas de Tasa de Absorción Específica (SAR) a campos >3T.</li>
+                            <li><strong>Aporte:</strong> Proporcionan información cuantitativa sobre la salud del cartílago más allá de la morfología, detectando potencialmente cambios degenerativos o inflamatorios tempranos. Su uso rutinario en trauma/dolor pediátrico no es estándar, pero pueden ser valiosos en casos específicos de investigación o complejos, especialmente en AIJ o seguimiento de lesiones condrales postraumáticas.</li>
+                        </ul>
+                        <h4 class="text-xl font-semibold mt-4 mb-2 text-blue-600">Imagen Ponderada por Difusión (DWI):</h4>
+                        <ul>
+                            <li><strong>Utilidad:</strong> Evalúa el movimiento del agua, sensible a la celularidad y a la integridad de la membrana celular. Los mapas de Coeficiente de Difusión Aparente (ADC) pueden ayudar a diferenciar procesos inflamatorios/malignos del tejido normal.</li>
+                            <li><strong>Aporte:</strong> Útil en sospecha de infección (detección de abscesos) o evaluación de tumores (evaluación de celularidad, diferenciación de tumor y edema), a menudo parte de protocolos de RM rápidos para infección. No es típicamente rutinaria para trauma/dolor a menos que exista una preocupación específica por estas entidades.</li>
+                        </ul>
+                        <h4 class="text-xl font-semibold mt-4 mb-2 text-blue-600">RM con Contraste (RM-CE) con secuencias T1 SG:</h4>
+                        <ul>
+                            <li><strong>Indicaciones:</strong> Sospecha de tumor, infección (artritis séptica, osteomielitis), artropatía inflamatoria (p.ej., AIJ para evaluación de sinovitis), o evaluación de la vascularización de lesiones de Osteocondritis Disecante (OCD).</li>
+                            <li><strong>Aporte:</strong> Delimita la extensión de la inflamación (realce sinovial en AIJ/artritis séptica), la vascularización de los tumores, la presencia de abscesos y la viabilidad de los fragmentos de OCD (aunque dGEMRIC es más específico para GAG del cartílago).</li>
+                        </ul>
+                        <p>La elección de secuencias "opcionales" está fuertemente influenciada por la pregunta clínica primaria y la edad del niño. Por ejemplo, las secuencias específicas para cartílago son más relevantes en sospecha de lesión condral u OCD, mientras que la DWI se prioriza en sospecha de infección/tumor. Las secuencias 3D ofrecen un buen equilibrio para la evaluación general, especialmente si el tiempo de exploración es una preocupación (permitiendo MPRs). Para trauma/dolor rutinario, las secuencias centrales más 3D GRE para cartílago suelen ser una buena combinación, mientras que la sospecha de AIJ requeriría contraste.</p>
+                    </div>
+                </div>
+
+                <button type="button" class="collapsible-button">
+                    <span>D. Protocolos de RM de Control/Seguimiento</span>
+                    <span class="arrow">&#9654;</span>
+                </button>
+                <div class="collapsible-content">
+                    <div class="p-4">
+                        <p>Los protocolos de seguimiento deben adaptarse a la pregunta clínica específica y a los hallazgos iniciales, siendo esencial la comparación con estudios previos.</p>
+                        <h4 class="text-xl font-semibold mt-4 mb-2 text-blue-600">Evaluación de la Curación Postraumática:</h4>
+                        <ul>
+                            <li><strong>Reparación de LCA/Menisco:</strong> Evaluar la integridad del injerto (continuidad, señal, grosor, posición de los túneles para el LCA), la curación meniscal (señal de desgarro persistente, desplazamiento, nuevos desgarros).
+                                <ul>
+                                    <li>Las secuencias centrales (Sag DP, Sag/Cor/Ax T2/DP SG) suelen ser suficientes.</li>
+                                    <li>RM del injerto de LCA: Señal baja normal en secuencias de TE corto; señal intermedia es común entre 4-8 meses postoperatorios, resolviéndose usualmente a los 12 meses. Una señal alta persistente o discontinuidad sugiere problemas.</li>
+                                    <li>Reparación meniscal: Buscar reducción de la señal del desgarro, tejido de puente. Una señal alta persistente que se extiende a la superficie articular después del período de curación esperado puede indicar una reparación fallida o un nuevo desgarro.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Estabilidad/Curación de OCD:</strong> Evaluar la estabilidad del fragmento (usando criterios como el borde de alta señal en T2, líquido/quistes subyacentes, brecha cartilaginosa), integración ósea, congruencia del cartílago articular y edema de médula ósea circundante.
+                                <ul>
+                                    <li>Secuencias centrales, más 3D GRE para cartílago. La RM-CE puede evaluar la vascularización del fragmento.</li>
+                                    <li>La nueva estadificación por RM para la curación de la OCD utiliza secuencias GRE de TE corto para visualizar la osificación progresiva.</li>
+                                    <li>El seguimiento postoperatorio de la OCD (p.ej., fijación con clavos bioabsorbibles) busca rotura de clavos, detritos y trastornos internos de la rodilla.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <h4 class="text-xl font-semibold mt-4 mb-2 text-blue-600">Monitorización de Condiciones Congénitas/Desarrollo/Inflamatorias:</h4>
+                        <ul>
+                            <li><strong>Respuesta al Tratamiento de AIJ:</strong> Evaluar cambios en el grosor/realce sinovial, derrame articular, edema de médula ósea y desarrollo/progresión de erosiones o pérdida de cartílago.
+                                <ul>
+                                    <li>Secuencias centrales, con T1 SG CE para sinovitis. Las secuencias cuantitativas (mapeo T2) pueden tener un papel en la monitorización del cartílago. Se puede utilizar el sistema de puntuación JAMRIS.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Progresión/Postoperatorio de Enfermedad de Blount:</strong> Evaluar la formación/resección de barras fiseales, corrección de la deformidad angular, morfología epifisaria/metafisaria.
+                                <ul>
+                                    <li>Las secuencias coronales T1 y GRE son valiosas para la evaluación de barras fiseales.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Otras condiciones congénitas:</strong> Monitorizar el desarrollo de complicaciones (p.ej., desgarros meniscales en menisco discoide, inestabilidad en displasia ligamentosa).</li>
+                        </ul>
+                        <p>Los protocolos de RM de seguimiento no consisten simplemente en repetir la exploración inicial; deben estar dirigidos a evaluar marcadores específicos de curación o progresión. Esto requiere comprender la historia natural de la condición tratada y los cambios esperados en la RM a lo largo del tiempo, como la "ligamentización" del injerto de LCA con cambios de señal, la revascularización/integración del fragmento de OCD, o la reducción de la sinovitis en la AIJ. Por lo tanto, los protocolos de seguimiento deben enfatizar las secuencias que mejor representen estos marcadores específicos, omitiendo potencialmente algunas secuencias iniciales si no son relevantes para la pregunta de seguimiento, con el fin de optimizar el tiempo de exploración y la comodidad del paciente.</p>
+                    </div>
+                </div>
+
+                <h3 class="mt-8 mb-4">Tabla 1: Protocolos de RM de Rodilla Pediátrica: Inicial y Seguimiento</h3>
+                <div class="table-container">
+                    <table id="tablaProtocolos1" class="min-w-full divide-y divide-slate-200">
+                        <thead class="bg-slate-100">
+                            <tr>
+                                <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-slate-600 uppercase tracking-wider">Indicación Clínica</th>
+                                <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-slate-600 uppercase tracking-wider">Secuencias Centrales (Planos y Ponderaciones Clave)</th>
+                                <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-slate-600 uppercase tracking-wider">Secuencias Opcionales/Avanzadas</th>
+                                <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-slate-600 uppercase tracking-wider">Parámetros Clave</th>
+                                <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-slate-600 uppercase tracking-wider">Propósito/Estructuras Clave Evaluadas</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-slate-200">
+                            <tr>
+                                <td class="px-4 py-3 whitespace-nowrap text-sm text-slate-700">Trauma Agudo/Dolor (Inicial)</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Sag: DP, DP/T2 SG; Cor: T1, DP/T2 SG; Ax: DP/T2 SG</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">3D GRE/FSE (para cartílago/MPR), STIR (mejor supresión grasa)</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Grosor corte: ≤3−4 mm; FOV: 14−16 cm; Matriz: ≥320×256</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Detección de lesiones meniscales, ligamentarias, condrales, óseas agudas, edema, derrame. Evaluación fiseal.</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 whitespace-nowrap text-sm text-slate-700">Sospecha Anomalía Congénita</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Sag: DP, T2 SG; Cor: T1, T2 SG; Ax: T2 SG</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">3D GRE/FSE (para morfología detallada)</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Similar a trauma</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Delineación de anatomía ósea y de tejidos blandos, displasias, variantes (p.ej., menisco discoide, displasia de LCA).</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 whitespace-nowrap text-sm text-slate-700">Sospecha Tumor/Infección/AIJ</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Sag: T1, STIR; Cor: T1, STIR; Ax: T1, STIR. T1 SG CE en ≥2 planos.</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">DWI (para infección/tumor)</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Similar a trauma</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Detección de infiltración medular, masa de tejidos blandos, realce sinovial, edema, abscesos, erosiones.</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 whitespace-nowrap text-sm text-slate-700">Seguimiento Reparación LCA</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Sag: DP, T2 SG; Cor: DP/T2 SG; Ax: T2 SG (orientado al injerto)</td>
+                                <td class="px-4 py-3 text-sm text-slate-700"></td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Similar a trauma</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Integridad del injerto (señal, continuidad, grosor), posición de túneles, complicaciones (ciclops, derrame).</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 whitespace-nowrap text-sm text-slate-700">Seguimiento Reparación Meniscal</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Sag: DP, T2 SG; Cor: DP/T2 SG</td>
+                                <td class="px-4 py-3 text-sm text-slate-700"></td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Similar a trauma</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Curación del menisco (persistencia/resolución de señal de desgarro), nuevo desgarro, extrusión.</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 whitespace-nowrap text-sm text-slate-700">Seguimiento Curación OCD</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Sag: DP, T2 SG; Cor: T1, T2 SG; Ax: T2 SG</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">3D GRE (para cartílago), T1 SG CE (opcional para viabilidad), GRE TE corto (para osificación)</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Similar a trauma</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Estabilidad del fragmento, integración ósea, congruencia cartilaginosa, edema medular, viabilidad.</td>
+                            </tr>
+                             <tr>
+                                <td class="px-4 py-3 whitespace-nowrap text-sm text-slate-700">Seguimiento AIJ</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Sag: T1, STIR; Cor: T1, STIR; Ax: STIR. T1 SG CE en ≥2 planos.</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Mapeo T2 (opcional para cartílago)</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Similar a trauma</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Actividad inflamatoria (sinovitis, edema óseo), derrame, progresión de erosiones, daño cartilaginoso.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="text-center">
+                    <button onclick="exportTableToCSV('tablaProtocolos1', 'protocolos_rm_rodilla_pediatrica_tabla1.csv')" class="action-button">
+                        Exportar Tabla 1 a CSV
+                    </button>
+                </div>
+            </section> <section id="anatomia-desarrollo">
+                <h2>III. Anatomía Normal del Desarrollo y Variantes de la Rodilla Pediátrica en RM</h2>
+                <p>La interpretación de la RM de rodilla pediátrica exige un conocimiento profundo de la anatomía en desarrollo y sus variantes, ya que muchos hallazgos normales para una edad pueden simular patología. La "normalidad" es un proceso dinámico, y lo que es típico en un lactante difiere marcadamente de un adolescente.</p>
+
+                <button type="button" class="collapsible-button">
+                    <span>A. Desarrollo Esquelético</span>
+                    <span class="arrow">&#9654;</span>
+                </button>
+                <div class="collapsible-content">
+                    <div class="p-4">
+                        <h4 class="text-xl font-semibold mt-4 mb-2 text-blue-600">Centros de Osificación Secundaria (COS):</h4>
+                        <ul>
+                            <li><strong>Aparición y Secuencia:</strong> Los COS se desarrollan dentro de la epífisis, inicialmente cartilaginosa. Los tiempos de aparición radiográfica son aproximados: fémur distal (3-6 meses), rótula (3-5 años), platillo tibial (nacimiento), tuberosidad tibial (10-12 años), cabeza del peroné (2-4 años). La RM puede mostrar centros de pre-osificación como focos de alta señal en secuencias sensibles al líquido dentro del cartílago antes de su visibilidad radiográfica. La osificación puede originarse de uno o múltiples centros que luego coalescen.</li>
+                            <li><strong>Características de Señal en RM por Edad:</strong> Los COS recién formados contienen médula ósea roja (T1 bajo-intermedio, T2/STIR intermedio-alto). La conversión a médula amarilla (T1 alto, T2 intermedio, suprime con SG) ocurre aproximadamente 6 meses después de la aparición radiográfica. La osificación irregular de los cóndilos femorales es común, especialmente en las porciones posteroinferiores centrales, y no debe confundirse con OCD. Estas áreas muestran cartílago suprayacente normal y ausencia de edema medular.</li>
+                        </ul>
+
+                        <h4 class="text-xl font-semibold mt-4 mb-2 text-blue-600">Fisis (Placas de Crecimiento):</h4>
+                        <ul>
+                            <li><strong>Apariencia en RM:</strong> La fisis es una estructura trilaminar en RM: una capa cartilaginosa hiperintensa en T2/DP SG (zonas germinal, proliferativa e hipertrófica), una línea hipointensa (zona de calcificación provisional - ZCP) y una línea hiperintensa (espongiosa primaria de la metáfisis). En T1, el cartílago muestra señal intermedia y la ZCP, señal baja.</li>
+                            <li><strong>Cambios Normales con la Maduración:</strong> En la infancia, la fisis es gruesa y discoide. Se vuelve más delgada y ondulada con la edad hasta el cierre. Una cicatriz fiseal hipointensa (remanente de la ZCP) es visible post-cierre.</li>
+                            <li><strong>Zonas de Edema Perifiseal Focal (FOPE):</strong> Edema medular localizado adyacente a las fisis en cierre (11-15 años), especialmente en fémur distal/tibia proximal, visto como un patrón en estrella en secuencias sensibles al líquido. Generalmente asintomático, sin correlato radiográfico.</li>
+                            <li><strong>Vasos Transfiseales:</strong> Presentes en lactantes (&lt;18 meses), cruzando la fisis; regresan más tarde. Pueden ser conspicuos en estados inflamatorios.</li>
+                        </ul>
+
+                        <h4 class="text-xl font-semibold mt-4 mb-2 text-blue-600">Cartílago Epifisario y Articular:</h4>
+                        <ul>
+                            <li><strong>Características de Señal:</strong> El cartílago hialino (epifisario, articular, fiseal) tiene una señal distintiva. El cartílago articular y fiseal son relativamente hiperintensos respecto al cartílago epifisario en T2 debido a la organización del colágeno y la unión del agua. El cartílago epifisario es T1 intermedio, T2/STIR intermedio-alto en la infancia. Las secuencias sensibles al líquido (T2SG, STIR, DP SG) muestran el cartílago con alta señal. Las secuencias GRE muestran todo el cartílago con alta señal.</li>
+                            <li><strong>Grosor y Maduración por Edad:</strong> El cartílago epifisario es grueso en neonatos/lactantes, gradualmente reemplazado por osificación. El grosor del cartílago articular también cambia. La señal del cartílago epifisario del fémur distal se vuelve heterogénea con la edad: baja señal en áreas de carga (desde el segundo año), aumento de señal en cóndilos posteriores (3-5 años) antes de la osificación. Estos cambios no deben confundirse con patología.</li>
+                        </ul>
+                        
+                        <h4 class="text-xl font-semibold mt-4 mb-2 text-blue-600">Conversión de la Médula Ósea:</h4>
+                        <ul>
+                            <li><strong>Patrones Normales (Roja a Amarilla):</strong> Neonatos: médula ósea completamente roja (T1 bajo, similar o ligeramente superior al músculo; T2/STIR intermedio-alto). La conversión comienza en el primer año de vida.</li>
+                            <li><strong>Secuencia de Conversión:</strong> Epífisis/apófisis convierten primero (dentro de los 6 meses de la aparición radiográfica del COS), luego diáfisis, luego metáfisis distal, y finalmente metáfisis proximal. Alrededor de la rodilla: conversión epifisaria, luego diáfisis de fémur distal/tibia proximal, y luego metáfisis. Las metáfisis proximales de fémur/húmero son los últimos sitios (patrón adulto hacia los ~25 años).</li>
+                            <li><strong>Señales en RM por Grupo de Edad:</strong>
+                                <ul>
+                                    <li>&lt;1 año: Predominantemente médula roja. Epífisis comienzan a convertir. La médula roja diafisaria puede ser T1 isointensa al músculo. Médula grasa heterogénea en diáfisis femoral a los 12 meses.</li>
+                                    <li>1-5 años: Médula amarilla progresiva en epífisis y diáfisis. Médula roja metafisaria aún prominente, puede ser T1 isointensa al músculo hasta ~2 años, luego se vuelve hiperintensa respecto al músculo.</li>
+                                    <li>5-10 años: Diáfisis mayormente grasas. Metáfisis muestran conversión progresiva; la médula roja residual es común, a menudo en forma de llama adyacente a la fisis.</li>
+                                    <li>10-15 años (Adolescencia): Mayor regresión de médula roja en metáfisis. Pueden aparecer zonas FOPE cerca de las fisis en cierre. La apariencia de "cielo estrellado" (focos de alta señal T2/STIR) en huesos del tarso, menos común en rodilla, puede persistir hasta los 15 años, representando médula roja residual/vascularización.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Clave para T1:</strong> La médula patológica es típicamente hipointensa respecto al músculo; la médula roja normal es iso a hiperintensa respecto al músculo (excepto en lactantes muy pequeños).</li>
+                            <li><strong>Reconversión:</strong> La médula amarilla a roja en respuesta a la demanda (p.ej., anemia) ocurre en orden inverso a la conversión.</li>
+                        </ul>
+                        <p>La comprensión de que la "normalidad" en la RM pediátrica es un proceso dinámico y dependiente de la edad es fundamental. Lo que es normal a una edad (p.ej., médula roja difusa, fisis gruesas, osificación irregular) sería claramente anormal en otra. Esto requiere no solo el conocimiento de las variantes, sino una comprensión profunda de la cronología de la maduración esquelética, un desafío de orden superior a simplemente conocer la anatomía adulta.</p>
+                    </div>
+                </div>
+
+                <button type="button" class="collapsible-button">
+                    <span>B. Variantes Normales Comunes y Similares de Patología</span>
+                    <span class="arrow">&#9654;</span>
+                </button>
+                <div class="collapsible-content">
+                    <div class="p-4">
+                        <p>Muchos "errores" en la RM de rodilla pediátrica surgen de la aplicación de conocimientos basados en adultos o de la mala interpretación de las características de señal hiperintensa de los tejidos en desarrollo (cartílago, fisis activas, médula roja) en secuencias sensibles al líquido como patología. Por ello, las secuencias ponderadas en T1 son desproporcionadamente importantes en la RM de rodilla pediátrica para la evaluación de la médula ósea y la anatomía, en comparación con la RM musculoesquelética de adultos donde las secuencias DP SG podrían dominar.</p>
+                        <ul>
+                            <li><strong>Rótula Bipartita/Multipartita:</strong> Centro de osificación accesorio no fusionado, usualmente superolateral (Saupe Tipo III es el más común, ~75%). Generalmente asintomática. Sintomática si un trauma/sobreuso interrumpe la sincondrosis, visible como edema medular en el fragmento y la rótula adyacente en T2SG/STIR. Diferenciar de fractura por los márgenes lisos y escleróticos del fragmento.</li>
+                            <li><strong>Defecto Dorsal de la Rótula (DDP):</strong> Defecto bien delimitado en la cara articular superolateral de la rótula. Típicamente asintomático, con cartílago suprayacente intacto. No confundir con OCD, absceso o tumor.</li>
+                            <li><strong>Irregularidad Metafisaria Femoral Distal / Desmoide Cortical:</strong> Hallazgo benigno, a menudo incidental, en la metáfisis posteromedial del fémur distal (origen del aductor mayor o cabeza medial del gastrocnemio). T1 bajo, T2 alto, puede realzar ligeramente. Márgenes bien definidos.</li>
+                            <li><strong>Osificación Irregular Normal vs. OCD:</strong> Los COS irregulares, especialmente en los cóndilos femorales posteriores, pueden simular OCD. Las variantes normales carecen de verdadero defecto cartilaginoso, líquido subcondral o edema subcondral significativo, vistos en OCD inestable. La localización (posteroinferior central para la variante vs. sitios clásicos de OCD) y la edad ayudan a diferenciar.</li>
+                            <li><strong>Ondulación/Actividad Fiseal Fisiológica:</strong> El contorno fiseal ondulado normal en niños mayores no debe confundirse con fractura. La señal hiperintensa en la espongiosa primaria es normal.</li>
+                            <li><strong>Tejido Fibrovascular Subperióstico:</strong> Fina banda de tejido hiperintenso en T2, especialmente en fémur distal posterior, normal en niños, desaparece tras el cierre fiseal; no es líquido/hematoma subperióstico.</li>
+                        </ul>
+                        <p>El concepto de "estrés mecánico" que influye en las apariencias normales del desarrollo (p.ej., irregularidad metafisaria femoral distal , cambios de señal en cartílago de carga , zonas FOPE ) es un tema recurrente. Esto sugiere un continuo entre la adaptación normal al estrés y la patología temprana relacionada con el estrés, haciendo la distinción sutil y dependiente de la correlación clínica y la ausencia de signos patológicos evidentes. El esqueleto en crecimiento responde activamente a su entorno mecánico, y no todos los cambios de señal indican enfermedad.</p>
+                    </div>
+                </div>
+                
+                <h3 class="mt-8 mb-4">Tabla 2: Apariencia en RM Relacionada con la Edad del Desarrollo Fiseal Normal y Conversión de Médula Ósea Alrededor de la Rodilla Pediátrica</h3>
+                <div class="table-container">
+                    <table id="tablaDesarrolloFiseal" class="min-w-full divide-y divide-slate-200">
+                        <thead class="bg-slate-100">
+                            <tr>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-slate-600 uppercase tracking-wider">Grupo de Edad</th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-slate-600 uppercase tracking-wider">Fisis Femoral Distal (Apariencia T1, T2/DP SG; Grosor; Contorno)</th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-slate-600 uppercase tracking-wider">Fisis Tibial Proximal (Apariencia T1, T2/DP SG; Grosor; Contorno)</th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-slate-600 uppercase tracking-wider">Cartílago Epifisario (Señal T1, T2/DP SG; Grosor relativo)</th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-slate-600 uppercase tracking-wider">Médula Ósea - Epífisis (Señal T1, T2/DP SG)</th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-slate-600 uppercase tracking-wider">Médula Ósea - Metáfisis (Señal T1, T2/DP SG)</th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-slate-600 uppercase tracking-wider">Médula Ósea - Diáfisis (Señal T1, T2/DP SG)</th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-slate-600 uppercase tracking-wider">Notas Clave del Desarrollo</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-slate-200">
+                            <tr>
+                                <td class="px-4 py-3 text-sm text-slate-700">&lt;1 año</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">T1 interm, T2/DP SG hiper; Gruesa, discoide</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">T1 interm, T2/DP SG hiper; Gruesa, discoide</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">T1 interm, T2/DP SG hiper; Grueso</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">T1 bajo-interm, T2/DP SG interm-alto (roja)</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">T1 bajo-interm, T2/DP SG interm-alto (roja)</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">T1 bajo-interm, T2/DP SG interm-alto (roja)</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">COS aparecen, inicio conversión epifisaria a grasa a los ~6m post-aparición COS. Médula diafisaria puede ser T1 isointensa a músculo.</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 text-sm text-slate-700">1-5 años</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">T1 interm, T2/DP SG hiper; Adelgazando, ondulando</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">T1 interm, T2/DP SG hiper; Adelgazando, ondulando</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">T1 interm, T2/DP SG hiper; Disminuyendo</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">T1 alto (grasa), T2/DP SG interm</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">T1 interm (roja), T2/DP SG interm-alto; Progresiva conversión a grasa</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">T1 alto (grasa), T2/DP SG interm</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Conversión grasa epifisaria y diafisaria progresiva. Médula metafisaria roja, T1 hiperintensa a músculo después de ~2 años.</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 text-sm text-slate-700">5-10 años</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">T1 interm, T2/DP SG hiper; Más delgada, ondulada</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">T1 interm, T2/DP SG hiper; Más delgada, ondulada</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">T1 interm, T2/DP SG interm; Fina capa sobre COS</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">T1 alto (grasa), T2/DP SG interm</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">T1 interm-alto (roja/grasa mixta), T2/DP SG variable</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">T1 alto (grasa), T2/DP SG interm</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Diáfisis mayormente grasa. Médula roja residual metafisaria común, forma de llama.</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 text-sm text-slate-700">10-15 años</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">T1 interm, T2/DP SG hiper; Delgada, muy ondulada, inicio cierre</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">T1 interm, T2/DP SG hiper; Delgada, muy ondulada, inicio cierre</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">T1 interm, T2/DP SG interm; Muy fina o ausente</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">T1 alto (grasa), T2/DP SG interm</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">T1 alto (grasa), T2/DP SG interm; Médula roja residual</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">T1 alto (grasa), T2/DP SG interm</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Cierre fiseal progresivo. Zonas FOPE pueden aparecer.</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 text-sm text-slate-700">&gt;15 años</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">T1/T2 bajo (cicatriz fiseal) o fusionada</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">T1/T2 bajo (cicatriz fiseal) o fusionada</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Ausente</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">T1 alto (grasa), T2/DP SG interm</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">T1 alto (grasa), T2/DP SG interm; Mínima roja residual</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">T1 alto (grasa), T2/DP SG interm</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Fisis cerradas. Patrón de médula adulta.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                 <div class="text-center">
+                    <button onclick="exportTableToCSV('tablaDesarrolloFiseal', 'desarrollo_fiseal_medula_osea_tabla2.csv')" class="action-button">
+                        Exportar Tabla 2 a CSV
+                    </button>
+                </div>
+
+                <h3 class="mt-8 mb-4">Tabla 3: Variantes Normales Comunes de la Rodilla Pediátrica en RM y su Diferenciación de Patología</h3>
+                <div class="table-container">
+                    <table id="tablaVariantesNormales" class="min-w-full divide-y divide-slate-200">
+                        <thead class="bg-slate-100">
+                            <tr>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-slate-600 uppercase tracking-wider">Variante</th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-slate-600 uppercase tracking-wider">Localización Típica</th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-slate-600 uppercase tracking-wider">Apariencia Clave en RM (T1, T2/DP SG)</th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-slate-600 uppercase tracking-wider">Características Diferenciales de Patología Similar</th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-slate-600 uppercase tracking-wider">Predilección por Edad (si existe)</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-slate-200">
+                            <tr>
+                                <td class="px-4 py-3 text-sm text-slate-700">Rótula Bipartita/ Multipartita</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Superolateral de la rótula</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Fragmento óseo con sincondrosis T1/T2 baja. Edema medular en T2 SG si sintomática.</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Fractura: bordes agudos, historia de trauma agudo. Variante: bordes lisos, escleróticos.</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Osificación a los 12 años, puede persistir.</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 text-sm text-slate-700">Defecto Dorsal de la Rótula (DDP)</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Superolateral, cara articular de la rótula</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Defecto bien delimitado, T1 bajo/interm, T2 variable. Cartílago suprayacente intacto.</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">OCD: cartílago irregular/brecha, edema subcondral significativo, líquido subyacente. Tumor: masa, realce.</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Niños/Adolescentes.</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 text-sm text-slate-700">Irregularidad Metafisaria Femoral Distal</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Posteromedial, metáfisis femoral distal</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">T1 bajo, T2 alto, puede realzar. Márgenes bien definidos.</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Tumor agresivo: márgenes mal definidos, destrucción cortical, masa de tejidos blandos.</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Niños/Adolescentes.</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 text-sm text-slate-700">Osificación Irregular Normal (vs. OCD)</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Cóndilos femorales posteriores (especialmente inferocentral)</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Fragmentación/irregularidad del COS. T1/T2 normal en médula ósea del fragmento y hueso adyacente. Cartílago suprayacente intacto.</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">OCD inestable: brecha cartilaginosa, líquido/quistes subcondrales, edema medular extenso en hueso parental.</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Más común en &lt;10-13 años (vs. OCD más en adolescentes).</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 text-sm text-slate-700">Zona FOPE</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Adyacente a fisis en cierre (fémur distal, tibia proximal)</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Edema medular en patrón estrellado en T2 SG/STIR. T1 normal o levemente bajo.</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Fractura por estrés/osteomielitis: puede haber línea de fractura, reacción perióstica, colección.</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Adolescentes (11-15 años).</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 text-sm text-slate-700">Tejido Fibrovascular Subperióstico</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Posterior, metáfisis femoral distal</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Fina banda T2 hiperintensa, realza con contraste.</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Hematoma/líquido subperióstico: colección más definida, puede tener niveles.</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Niños (desaparece post-cierre fiseal).</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="text-center">
+                    <button onclick="exportTableToCSV('tablaVariantesNormales', 'variantes_normales_rodilla_tabla3.csv')" class="action-button">
+                        Exportar Tabla 3 a CSV
+                    </button>
+                </div>
+            </section> <section id="patologias-comunes">
+                <h2>IV. Patologías Comunes de la Rodilla Pediátrica: Hallazgos en RM y Estadísticas Relacionadas con la Edad</h2>
+                <p>La patología de la rodilla en niños es diversa y a menudo está influenciada por la etapa de desarrollo esquelético y los niveles de actividad. La RM es crucial para el diagnóstico preciso y la planificación del tratamiento.</p>
+
+                <button type="button" class="collapsible-button">
+                    <span>A. Lesiones Traumáticas</span>
+                    <span class="arrow">&#9654;</span>
+                </button>
+                <div class="collapsible-content">
+                    <div class="p-4">
+                        <h4>Lesiones Meniscales:</h4>
+                        <ul>
+                            <li><strong>Incidencia e Información General:</strong> Son un trastorno interno común, aunque menos frecuentes que en adultos. En algunas series pediátricas, son más frecuentes que las lesiones del LCA. El menisco medial se lesiona con más frecuencia que el lateral, y el cuerno posterior más que el anterior. La RM tiene una sensibilidad del 80-85% y una especificidad del 88-100% para los desgarros. Los desgarros periféricos tienen mejor potencial de curación debido a la vascularización, que es más extensa en niños más pequeños (&lt;10-12 años).</li>
+                            <li><strong>Gradación de Señal en RM (similar a adultos, con salvedad pediátrica):</strong>
+                                <ul>
+                                    <li>Grado 1: Señal baja normal.</li>
+                                    <li>Grado 2: Aumento de señal intrameniscal que no se extiende a la superficie articular. En niños, puede relacionarse con vascularización persistente en lugar de degeneración mixoide.</li>
+                                    <li>Grado 3: Señal anormal que se extiende a una superficie articular, indicativa de un desgarro.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Tipos de Desgarro:</strong> Horizontal, vertical (longitudinal, radial), en asa de cubo, colgajo, complejo. Los desgarros en asa de cubo muestran el signo del doble LCP y fragmento desplazado. El signo de la corbata de moño ausente es menos fiable en niños debido al tamaño variable del menisco.</li>
+                            <li><strong>Menisco Discoide:</strong> Variante congénita común, casi uniformemente lateral. Prevalencia del 0.4-17%, mayor en poblaciones asiáticas. A menudo bilateral (hasta 20%). Propenso a desgarros e inestabilidad.
+                                <ul>
+                                    <li>Criterios de RM: Cuerpo meniscal en ≥3 imágenes sagitales contiguas de 4−5 mm; ancho >12−15 mm; diferencia de altura >2 mm en coronal.</li>
+                                    <li>Tipos (Watanabe): Completo (más común), Incompleto, tipo Wrisberg (hipermóvil debido a la ausencia de la inserción del ligamento coronario posterior). La rodilla en resorte se asocia a menudo con el tipo Wrisberg.</li>
+                                    <li>Edad: Los síntomas suelen presentarse en las dos primeras décadas, comúnmente entre los 10-15 años. Los desgarros aislados del menisco lateral en niños pequeños deben hacer sospechar un menisco discoide subyacente.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Estadísticas por Edad:</strong> Los desgarros meniscales son menos comunes en preadolescentes pero aumentan con la edad y la participación deportiva. Los meniscos discoides suelen presentar síntomas en la adolescencia.</li>
+                        </ul>
+
+                        <h4>Lesiones Ligamentosas:</h4>
+                        <ul>
+                            <li><strong>Lesiones del LCA:</strong>
+                                <ul>
+                                    <li>Prevalencia y Demografía: Frecuentes en adolescentes, especialmente en niñas activas. La precisión de la RM es comparable a la de los adultos en adolescentes, pero puede ser menor antes del cierre fiseal.</li>
+                                    <li>Patrones de Lesión:
+                                        <ul>
+                                            <li>Esqueléticamente Inmaduros: Las fracturas por avulsión de la espina tibial son más comunes que los desgarros de la sustancia media del LCA debido a la debilidad del hueso fiseal. Los desgarros parciales del LCA también son más comunes. Las lesiones del LCA son más comunes en niños en este grupo.</li>
+                                            <li>Esqueléticamente Maduros: Los desgarros completos de la sustancia media se vuelven más comunes, acercándose a los patrones de los adultos. Más comunes en niñas en este grupo.</li>
+                                        </ul>
+                                    </li>
+                                    <li>Signos en RM: Signos primarios (discontinuidad de fibras, señal/trayecto anormal) y secundarios (ángulo del LCP, traslación tibial anterior, cuerno posterior del menisco lateral descubierto, contusiones "en beso" del cóndilo femoral lateral y platillo tibial posterolateral). Los patrones de edema de médula ósea pueden verse sin desgarro del LCA en pacientes esqueléticamente inmaduros.</li>
+                                    <li>Lesiones Asociadas: Desgarros meniscales (especialmente lateral con desgarro agudo del LCA, medial crónico), desgarros de otros ligamentos (LCM común), contusiones óseas son frecuentes. La fractura de Segond (avulsión del reborde tibial lateral) está altamente asociada con el desgarro del LCA.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Lesiones de LCP, LCM, LCL:</strong> Menos comunes que las del LCA. Los desgarros del LCM pueden ocurrir con estrés en valgo. Las lesiones del LCP/LCL a menudo sugieren un traumatismo de mayor energía.</li>
+                        </ul>
+
+                        <h4>Lesiones Osteocondrales: Osteocondritis Disecante (OCD):</h4>
+                        <ul>
+                            <li><strong>Definición y Etiología:</strong> Afecta al hueso subcondral y al cartílago suprayacente, pudiendo provocar inestabilidad y formación de cuerpos libres. Etiología probablemente multifactorial: traumatismos repetitivos, isquemia, predisposición genética.</li>
+                            <li><strong>Localizaciones Comunes:</strong> Cara lateral del cóndilo femoral medial (lesión clásica, >50-75% de las OCD de rodilla), cóndilo femoral lateral, rótula.</li>
+                            <li><strong>Edad y Demografía:</strong> Mayor incidencia entre los 12-19 años; más común en niños. La OCD juvenil (fisis abiertas) tiene mejor pronóstico que la OCD del adulto.</li>
+                            <li><strong>Papel de la RM:</strong> La estadificación de la estabilidad es crucial para el manejo (conservador para estables, cirugía para inestables).</li>
+                            <li><strong>Signos de Instabilidad en RM (Clásicos):</strong>
+                                <ul>
+                                    <li>Borde de alta señal en T2 en la interfaz fragmento-hueso.</li>
+                                    <li>Quistes llenos de líquido debajo de la lesión.</li>
+                                    <li>Línea de alta señal en T2 a través del cartílago suprayacente.</li>
+                                    <li>Defecto osteocondral focal/fragmento desplazado.</li>
+                                    <li>Signos adicionales: Borde de baja señal en el hueso parental, alteración de la curvatura superficial, edema medular perilesional extenso. El realce con contraste puede indicar viabilidad.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Seguimiento:</strong> Monitorizar la curación, la integración ósea, la superficie del cartílago.</li>
+                        </ul>
+
+                        <h4>Lesiones Fiseales:</h4>
+                        <ul>
+                            <li><strong>General:</strong> Las placas de crecimiento son puntos débiles antes de la fusión. Se reportan hasta en el 2.9% de las RM de rodilla pediátricas. La RM es útil para fracturas sutiles/ocultas y para evaluar la extensión.</li>
+                            <li><strong>Clasificación de Salter-Harris (Correlatos en RM):</strong>
+                                <ul>
+                                    <li>Tipo I: Fractura a través de la fisis. RM: Ensanchamiento fiseal, edema.</li>
+                                    <li>Tipo II: Fractura a través de la fisis y la metáfisis (fragmento de Thurston Holland). La más común. RM: Línea de fractura metafisaria hacia la fisis, edema.</li>
+                                    <li>Tipo III: Fractura a través de la fisis y la epífisis hasta la superficie articular. RM: Fractura epifisaria hacia la fisis, edema.</li>
+                                    <li>Tipo IV: Fractura a través de metáfisis, fisis y epífisis. RM: Línea de fractura transfiseal, edema.</li>
+                                    <li>Tipo V: Lesión por aplastamiento de la fisis. Difícil de diagnosticar agudamente; la RM puede mostrar estrechamiento/cambio de señal fiseal, posteriormente detención del crecimiento.</li>
+                                    <li>Los tipos más altos tienen mayor riesgo de detención del crecimiento/barra fiseal.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Ensanchamiento Fiseal por Estrés:</strong> Estrés repetitivo en atletas, difiere de Salter-Harris I agudo; sin línea de fractura aguda, puede ser focal.</li>
+                        </ul>
+
+                        <h4>Lesiones Apofisarias (Apofisitis por Tracción):</h4>
+                        <ul>
+                            <li><strong>Enfermedad de Osgood-Schlatter:</strong> Inflamación de la inserción del tendón rotuliano en la tuberosidad tibial. Edades 10-15 años.
+                                <ul><li>RM: Engrosamiento del tendón rotuliano distal, edema en el tendón y la tuberosidad tibial, bursitis infrarrotuliana, edema de tejidos blandos anterior a la tuberosidad, fragmentación de la apófisis.</li></ul>
+                            </li>
+                            <li><strong>Síndrome de Sinding-Larsen-Johansson (SLJ):</strong> Inflamación en el polo inferior de la rótula (origen del tendón rotuliano). Edades 10-14 años.
+                                <ul><li>RM: Engrosamiento del tendón rotuliano proximal, edema en el tendón y polo inferior de la rótula, edema de tejidos blandos adyacentes/grasa de Hoffa.</li></ul>
+                            </li>
+                        </ul>
+                        <p>La influencia de la activa osificación y vascularización del esqueleto pediátrico no solo define patrones de lesión únicos, sino que también modula la presentación de patologías como la OCD y los tumores. Por ejemplo, el mejor pronóstico de la OCD juvenil está ligado a las fisis abiertas y al potencial de curación inherente al crecimiento. De manera similar, la localización frecuente de tumores en las metáfisis se correlaciona con estas zonas de alta actividad metabólica. Esta interconexión subraya que la comprensión del desarrollo normal es clave para interpretar la patología pediátrica.</p>
+                        <p>Además, la "estadística por edad" para las patologías de rodilla pediátrica es un concepto que debe manejarse con matices. El término "pediátrico" abarca un rango de edad muy amplio, con enormes diferencias en madurez esquelética y niveles de actividad. Para que las estadísticas de incidencia sean verdaderamente significativas para el diagnóstico diferencial, a menudo requieren una estratificación en bandas de edad más estrechas (p.ej., pre-puberal, adolescente). Por ejemplo, las avulsiones de la espina tibial son comunes en niños más pequeños con fisis abiertas, mientras que los desgarros de la sustancia del LCA se vuelven más prevalentes en adolescentes mayores, esqueléticamente maduros.</p>
+                    </div>
+                </div>
+
+                <button type="button" class="collapsible-button">
+                    <span>B. Condiciones Congénitas y del Desarrollo</span>
+                    <span class="arrow">&#9654;</span>
+                </button>
+                <div class="collapsible-content">
+                    <div class="p-4">
+                        <h4>Aplasia/Hipoplasia Rotuliana:</h4>
+                        <p>Rara, puede ser aislada o parte de síndromes (p.ej., Síndrome de Nail-Patella, Síndrome de Rótula Pequeña (SPS)). La RM es útil antes de la osificación rotuliana (antes de los 3-5 años) para evaluar el anlage cartilaginoso. Se asocia con inestabilidad de rodilla, dolor y OA temprana. Puede observarse desplazamiento superolateral de la rótula.</p>
+
+                        <h4>Displasia de Ligamentos Cruzados (Agenesia/Hipoplasia):</h4>
+                        <p>Rara (0.017/1000 nacidos vivos). El LCA se afecta más comúnmente que el LCP.</p>
+                        <ul>
+                            <li><strong>Clasificación de Manner (basada en RM):</strong>
+                                <ul>
+                                    <li>Tipo I: LCA hipo/aplásico, LCP normal.</li>
+                                    <li>Tipo II: LCA aplásico, LCP hipoplásico.</li>
+                                    <li>Tipo III: LCA y LCP aplásicos.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Hallazgos Asociados en RM:</strong> Espinas tibiales hipoplásicas/aplásicas, escotadura intercondílea superficial/estrecha, hipoplasia del cóndilo femoral lateral, anomalías meniscales (discoide, hipoplásico), luxación rotuliana.</li>
+                        </ul>
+
+                        <h4>Displasia/Hipoplasia Condilar/Epifisaria Femoral o Tibial:</h4>
+                        <ul>
+                            <li><strong>Hipoplasia Condilar Femoral:</strong> Puede asociarse con displasia de LCA/LCP , deficiencia femoral congénita (CFD/PFFD) , menisco discoide (hipoplasia del cóndilo femoral lateral) , inestabilidad rotuliana (displasia troclear, hipoplasia del cóndilo femoral lateral). La RM muestra tamaño reducido/morfología anormal del (los) cóndilo(s).</li>
+                            <li><strong>Hipoplasia Condilar/Espina Tibial:</strong> Asociada con displasia de LCA/LCP (espinas tibiales hipoplásicas) , menisco discoide (ahuecamiento del platillo tibial lateral, espina tibial hipoplásica) , hemimelia tibial (tibia hipoplásica/ausente). La RM puede evaluar el anlage cartilaginoso en niños pequeños con hemimelia tibial.</li>
+                        </ul>
+                        
+                        <h4>Enfermedad de Blount (Tibia Vara):</h4>
+                        <p>Alteración del crecimiento de la metáfisis/epífisis proximal medial de la tibia que conduce a una deformidad en varo.</p>
+                        <ul>
+                            <li><strong>Tipos:</strong> Infantil (inicio temprano, &lt;4 años, a menudo bilateral, más severa) y Adolescente (inicio tardío, >10 años, a menudo unilateral, asociada con obesidad). También se describe el tipo juvenil (4-10 años).</li>
+                            <li><strong>Características en RM:</strong> Pico metafisario medial, depresión del platillo tibial medial, ensanchamiento/irregularidad fiseal, engrosamiento del cartílago medial, anomalías meniscales (hipertrofia/desgarro). Crucial para detectar barras fiseales (puente óseo prematuro de la fisis) especialmente en etapas tardías o preoperatoriamente. Las barras fiseales aparecen como estructuras de baja señal que cruzan la fisis hiperintensa en secuencias T1 y GRE.</li>
+                            <li><strong>Clasificación de Langenskiöld (Radiográfica, 6 etapas para infantil):</strong> Describe la progresión desde la irregularidad metafisaria (Etapa I) hasta la formación de la barra fiseal (Etapa VI). La RM puede proporcionar una evaluación más detallada del estado fiseal y cartilaginoso correspondiente a estas etapas.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <button type="button" class="collapsible-button">
+                    <span>C. Condiciones Inflamatorias e Infecciosas</span>
+                    <span class="arrow">&#9654;</span>
+                </button>
+                <div class="collapsible-content">
+                    <div class="p-4">
+                        <h4>Artritis Idiopática Juvenil (AIJ):</h4>
+                        <ul>
+                            <li><strong>General:</strong> Artritis crónica de causa desconocida en &lt;16 años. La rodilla es la articulación más comúnmente afectada.</li>
+                            <li><strong>Papel de la RM:</strong> Detección temprana de inflamación, monitorización de la progresión de la enfermedad y respuesta al tratamiento. Superior a la radiografía para cambios en tejidos blandos/cartílago/médula ósea.</li>
+                            <li><strong>Hallazgos Clave en RM (criterios JAMRIS a menudo utilizados ):</strong>
+                                <ul>
+                                    <li>Sinovitis: Engrosamiento sinovial y realce post-gadolinio (mejor visto en T1 SG CE).</li>
+                                    <li>Derrame Articular: Aumento del líquido articular (hiperintenso T2/STIR, hipo T1).</li>
+                                    <li>Edema de Médula Ósea (Osteítis): Hiperintenso en T2SG/STIR, hipo T1, realza. Predictor de daño erosivo.</li>
+                                    <li>Pérdida/Lesiones del Cartílago: Adelgazamiento, irregularidades.</li>
+                                    <li>Erosiones Óseas: Interrupciones corticales, a menudo en inserciones sinoviales.</li>
+                                    <li>Tenosinovitis, Entesitis, Bursitis: También detectables.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Diferenciación:</strong> La AIJ puede mostrar edema de médula ósea (25% de los casos), raramente visto en la artritis de Lyme. La artritis séptica suele ser más aguda, con marcadores inflamatorios más altos.</li>
+                        </ul>
+
+                        <h4>Artritis Séptica:</h4>
+                        <p>Emergencia ortopédica.</p>
+                        <ul>
+                            <li><strong>Etiología:</strong> Generalmente diseminación hematógena; S. aureus es el más común.</li>
+                            <li><strong>Papel de la RM:</strong> Detección temprana, especialmente si la aspiración es difícil o para evaluar osteomielitis.</li>
+                            <li><strong>Signos Tempranos en RM:</strong> Derrame articular (a menudo complejo/ecogénico en ecografía), engrosamiento y realce sinovial (T1 SG CE), edema perisinovial/de tejidos blandos (T2SG/STIR), edema de médula ósea en huesos adyacentes (T2SG/STIR, T1 SG CE). El daño cartilaginoso puede ocurrir rápidamente.</li>
+                            <li><strong>Diferenciación de Sinovitis Transitoria (ST) y AIJ:</strong>
+                                <ul>
+                                    <li>ST: Usualmente cadera, autolimitada, el derrame puede ser el único hallazgo. La RM se realiza con menos frecuencia para ST a menos que sea atípica.</li>
+                                    <li>Artritis séptica vs. Artritis de Lyme: Lyme puede mostrar más miositis, adenopatía poplítea, menos edema subcutáneo. PCR/VSG generalmente más altas en artritis séptica.</li>
+                                    <li>Artritis séptica vs. AIJ: La artritis séptica es más aguda, a menudo con signos sistémicos más intensos. La AIJ es crónica. Las características de RM pueden superponerse (derrame, sinovitis, EMO). El edema de médula ósea y el edema de tejidos blandos pueden ser más pronunciados en la artritis séptica. El tejido sinovial de baja señal en T1/T2 puede favorecer a la AIJ.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <h4>Osteomielitis:</h4>
+                        <p>Puede ocurrir adyacente a una articulación séptica o de forma independiente. La RM muestra edema medular, disrupción cortical, reacción perióstica, formación de abscesos.</p>
+                    </div>
+                </div>
+
+                <button type="button" class="collapsible-button">
+                    <span>D. Tumores Óseos Pediátricos Alrededor de la Rodilla</span>
+                    <span class="arrow">&#9654;</span>
+                </button>
+                <div class="collapsible-content">
+                    <div class="p-4">
+                        <p>La rodilla es una localización común para tumores óseos primarios en niños, especialmente en las metáfisis cercanas a las fisis activas. La mayoría son benignos. Las radiografías son la modalidad inicial; la RM se utiliza para determinar la extensión, la afectación de tejidos blandos, la infiltración medular y caracterizar la agresividad. La diferenciación entre tumores óseos benignos y malignos en niños mediante RM se basa en una constelación de hallazgos, pero existe una superposición significativa, especialmente en relación con el edema peritumoral. Si bien la RM sobresale en la estadificación local, las características radiográficas (márgenes, reacción perióstica, matriz) a menudo siguen siendo primordiales para la caracterización inicial y para guiar la biopsia si es necesario, lo que destaca el papel complementario de las modalidades de imagen.</p>
+                        <h4>Tumores Benignos:</h4>
+                        <ul>
+                            <li><strong>Fibroma No Osificante (FNO) / Defecto Cortical Fibroso:</strong> Lesión benigna más común. Excéntrico, metafisario, margen esclerótico bien definido (1A).
+                                <ul><li>RM: T1 bajo/intermedio, T2 alto (temprano); T1/T2 bajo (maduro, esclerótico). Realce variable.</li></ul>
+                            </li>
+                            <li><strong>Osteocondroma:</strong> Proyección ósea cubierta de cartílago desde la superficie ósea, continuidad medular/cortical. Metafisario, apunta lejos de la articulación.
+                                <ul><li>RM: Casquete cartilaginoso T1 intermedio/bajo, T2 alto. Grosor del casquete &lt;1.5−2 cm en adultos, puede ser hasta 3 cm en niños. Continuidad medular.</li></ul>
+                            </li>
+                            <li><strong>Quiste Óseo Aneurismático (QOA):</strong> Expansivo, lítico, multiloculado, canales llenos de sangre. Excéntrico, metafisario.
+                                <ul><li>RM: Niveles líquido-líquido característicos (señal variable T1/T2 según la edad de la sangre), septos que realzan, borde de baja señal.</li></ul>
+                            </li>
+                            <li><strong>Condroblastoma:</strong> Tumor cartilaginoso benigno raro. Localización epifisaria/apofisaria.
+                                <ul><li>RM: T1 bajo/intermedio, T2 heterogéneo. Edema peritumoral marcado común. Lobulado, bien definido, puede tener calcificaciones (baja señal). Niveles líquido-líquido si QOA secundario.</li></ul>
+                            </li>
+                        </ul>
+                        <h4>Tumores Malignos:</h4>
+                        <ul>
+                            <li><strong>Osteosarcoma:</strong> Tumor óseo maligno primario más común en niños. Metafisario, a menudo alrededor de la rodilla. Agresivo: márgenes mal definidos, destrucción cortical, masa de tejidos blandos, reacción perióstica agresiva (sol naciente, triángulo de Codman). Produce matriz osteoide (visible como baja señal/calcificación).
+                                <ul><li>RM: T1/T2 heterogéneo. Matriz osteoide de baja señal en todas las secuencias. Componente de tejidos blandos que realza. Buena para extensión intramedular/tejidos blandos/neurovascular/articular, lesiones satélite. Osteosarcoma telangiectásico: grandes áreas quísticas/hemorrágicas con niveles líquido-líquido, puede simular QOA.</li></ul>
+                            </li>
+                            <li><strong>Sarcoma de Ewing:</strong> Segundo más común. Tumor de células redondas pequeñas azules. Diafisario/metadiafisario. Destrucción permeativa/apolillada, gran masa de tejidos blandos (a menudo desproporcionada a la lesión ósea), reacción perióstica laminada (piel de cebolla).
+                                <ul><li>RM: T1 bajo-intermedio, T2 heterogéneo alto. Masa de tejidos blandos prominente que realza. Buena para extensión medular/tejidos blandos.</li></ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3 class="mt-8 mb-4">Tabla 4: Lesiones Traumáticas Pediátricas Comunes de Rodilla: Características Clave en RM y Consideraciones de Edad</h3>
+                <div class="table-container">
+                    <table id="tablaLesionesTraumaticas" class="min-w-full divide-y divide-slate-200">
+                        <thead class="bg-slate-100">
+                            <tr>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-slate-600 uppercase tracking-wider">Tipo de Lesión</th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-slate-600 uppercase tracking-wider">Hallazgos Clave en RM</th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-slate-600 uppercase tracking-wider">Rango de Edad Típico/Contexto Madurez Esquelética</th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-slate-600 uppercase tracking-wider">Notas/Asociaciones Comunes</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-slate-200">
+                            <tr>
+                                <td class="px-4 py-3 text-sm text-slate-700">Desgarro Meniscal</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Señal Grado 3 (línea hiperintensa contactando superficie articular en DP/T2 SG). Morfología del desgarro (radial, longitudinal, asa de cubo, etc.).</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Aumenta con la edad y actividad deportiva. Menos común en preadolescentes.</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Edema óseo adyacente, derrame. Lesiones LCA.</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 text-sm text-slate-700">Menisco Discoide</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Cuerpo meniscal ancho (>12-15mm), continuo en ≥3 cortes sagitales. Aumento de señal intrameniscal (degeneración).</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Presentación sintomática usualmente 10-15 años.</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Lateral > Medial. Propenso a desgarros. Chasquido (tipo Wrisberg).</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 text-sm text-slate-700">Lesión LCA / Avulsión Espina Tibial</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">LCA: Discontinuidad fibras, edema/señal alta intrínseca, curso anormal. Signos secundarios (contusiones óseas, traslación tibial). Avulsión: Fragmento óseo de espina tibial con LCA intacto insertado, edema.</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Avulsión: Más común en esqueleto inmaduro (&lt;12-14 años). Desgarro LCA: Más común en adolescentes mayores/esqueleto maduro.</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Lesiones meniscales, LCM, contusiones óseas (Segond).</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 text-sm text-slate-700">Osteocondritis Disecante (OCD)</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Defecto osteocondral focal. Señales de inestabilidad: líquido en interfaz, quistes subcondrales, brecha cartilaginosa, fragmento suelto. Edema medular.</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Pico 12-19 años. Juvenil (fisis abiertas) mejor pronóstico.</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Localización más común: cara lateral del cóndilo femoral medial.</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 text-sm text-slate-700">Lesión Fiseal Salter-Harris (I-V)</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Edema a través de fisis (I). Fractura metafisaria a fisis (II). Fractura epifisaria a fisis (III). Fractura a través de metáfisis-fisis-epífisis (IV). Aplastamiento fisis (V). Ensanchamiento fiseal.</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Esqueleto inmaduro (fisis abiertas).</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Tipo II más común. Riesgo de barra fiseal/alteración crecimiento con tipos altos.</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 text-sm text-slate-700">Enfermedad de Osgood-Schlatter</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Edema/fragmentación apófisis tuberosidad tibial. Edema/engrosamiento tendón rotuliano distal. Bursitis infrarrotuliana profunda. Edema tejidos blandos anteriores.</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Adolescentes activos (10-15 años).</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Tracción repetitiva.</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 text-sm text-slate-700">Síndrome de Sinding-Larsen-Johansson</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Edema polo inferior rótula. Edema/engrosamiento tendón rotuliano proximal. Edema grasa de Hoffa adyacente.</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Adolescentes activos (10-14 años).</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Tracción repetitiva.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="text-center">
+                    <button onclick="exportTableToCSV('tablaLesionesTraumaticas', 'lesiones_traumaticas_rodilla_tabla4.csv')" class="action-button">
+                        Exportar Tabla 4 a CSV
+                    </button>
+                </div>
+
+                <h3 class="mt-8 mb-4">Tabla 5: Características Diferenciales Clave en RM de Tumores Óseos Pediátricos Comunes de Rodilla</h3>
+                <div class="table-container">
+                    <table id="tablaTumoresOseos" class="min-w-full divide-y divide-slate-200">
+                        <thead class="bg-slate-100">
+                            <tr>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-slate-600 uppercase tracking-wider">Tipo de Tumor</th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-slate-600 uppercase tracking-wider">Localización Típica (E/M/D; C/Exc)<sup>1</sup></th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-slate-600 uppercase tracking-wider">Márgenes (Definidos/Mal definidos; Esclerosis)</th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-slate-600 uppercase tracking-wider">Matriz (Osteoide/Condroide/Ninguna)</th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-slate-600 uppercase tracking-wider">Reacción Perióstica (Ninguna/Benigna/Agresiva)</th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-slate-600 uppercase tracking-wider">Masa Tejidos Blandos</th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-slate-600 uppercase tracking-wider">Características Señal RM Clave (T1, T2, SG, CE)</th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-slate-600 uppercase tracking-wider">Rango Edad Común</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-slate-200">
+                            <tr>
+                                <td class="px-4 py-3 text-sm text-slate-700">Fibroma No Osificante (FNO)</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">M; Exc</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Bien definidos; Esclerosis (1A)</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Ninguna</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Ninguna/Benigna leve</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">No</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">T1 bajo/interm, T2 alto (temprano); T1/T2 bajo (maduro). Realce variable.</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">5-15 años</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 text-sm text-slate-700">Osteocondroma</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">M; Superficial (pediculado o sésil)</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Bien definidos; Continuidad cortical/medular</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Condroide (casquete)</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Ninguna</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">No (a menos que haya bursitis)</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Casquete: T1 interm/bajo, T2 alto. Médula ósea continua. Grosor casquete &lt;3cm (niños).</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">&lt;20 años</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 text-sm text-slate-700">Quiste Óseo Aneurismático (QOA)</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">M; Exc</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Bien definidos; Expansivo</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Ninguna (sangre)</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Benigna, expansiva</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Raro (abombamiento perióstico)</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Niveles líquido-líquido (T1/T2 variable). Septos que realzan. Borde T1/T2 bajo.</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">&lt;20 años</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 text-sm text-slate-700">Condroblastoma</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">E/Apófisis; Exc</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Bien definidos; Esclerosis fina</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Condroide (punteado/anular)</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Benigna/Ninguna</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Raro</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">T1 bajo/interm, T2 heterogéneo. Edema peritumoral marcado. Realce heterogéneo.</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">10-25 años</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 text-sm text-slate-700">Osteosarcoma (Convencional)</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">M; Exc/Central</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Mal definidos (1C)</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Osteoide (amorfo, nuboso)</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Agresiva (sol naciente, Codman)</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Sí, a menudo</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">T1/T2 heterogéneo. Matriz osteoide: baja señal. Componente tisular realza. Extensión medular/partes blandas.</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">10-25 años</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 text-sm text-slate-700">Sarcoma de Ewing</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">D/MD; Central</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Mal definidos, permeativo (1C)</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Ninguna</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Agresiva (piel de cebolla, Codman)</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">Sí, a menudo grande</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">T1 bajo/interm, T2 heterogéneo alto. Realce prominente masa partes blandas.</td>
+                                <td class="px-4 py-3 text-sm text-slate-700">5-20 años</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="text-xs mt-1 text-slate-500"><sup>1</sup> E: Epífisis, M: Metáfisis, D: Diáfisis, Apófisis; C: Central, Exc: Excéntrico.</p>
+                </div>
+                <div class="text-center">
+                    <button onclick="exportTableToCSV('tablaTumoresOseos', 'tumores_oseos_rodilla_tabla5.csv')" class="action-button">
+                        Exportar Tabla 5 a CSV
+                    </button>
+                </div>
+            </section> <section id="interpretacion-sistematica">
+                <h2>V. Interpretación Sistemática de la RM de Rodilla Pediátrica, Consejos y Errores Comunes</h2>
+                <p>Una interpretación precisa de la RM de rodilla pediátrica requiere un enfoque sistemático, conocimiento de la anatomía del desarrollo y sus variantes, y conciencia de los errores comunes.</p>
+
+                <button type="button" class="collapsible-button">
+                    <span>A. Consejos Prácticos y Errores a Evitar (Pitfalls)</span>
+                    <span class="arrow">&#9654;</span>
+                </button>
+                <div class="collapsible-content">
+                    <div class="p-4">
+                        <ul>
+                            <li><strong>Conocer la Anatomía del Desarrollo y Variantes Normales:</strong> Es el error más común. La fisis, los centros de osificación y la conversión de la médula ósea cambian con la edad. Confundir variantes normales (p.ej., osificación irregular de cóndilos femorales, defecto dorsal de la rótula, rótula bipartita) con patología (OCD, fractura) es frecuente. La hiperintensidad normal del cartílago en crecimiento, fisis activas y médula roja en secuencias sensibles al líquido puede malinterpretarse como edema o inflamación. Las secuencias T1 son cruciales para la evaluación de la médula ósea y la anatomía en este contexto.</li>
+                            <li><strong>Correlacionar con la Clínica y Radiografías Previas:</strong> La RM no debe interpretarse aisladamente. La edad del paciente, la historia clínica (trauma, cronicidad del dolor), y los hallazgos radiográficos son esenciales. Una irregularidad metafisaria femoral distal puede ser un hallazgo incidental normal en un niño asintomático, pero requiere mayor escrutinio si hay dolor focal.</li>
+                            <li><strong>No Extrapolar Criterios de Adultos:</strong> Ciertos signos de RM validados en adultos pueden no ser fiables en niños (p.ej., signo de la corbata de moño ausente para desgarros meniscales en asa de cubo ; señal meniscal grado 2 puede ser vascularización normal y no degeneración ). La laxitud ligamentaria fisiológica es mayor en niños.</li>
+                            <li><strong>Edema de Médula Ósea Inespecífico:</strong> El edema de médula ósea es un hallazgo común pero inespecífico; puede ser traumático, degenerativo, inflamatorio o tumoral. Su patrón y localización, junto con otros hallazgos y la clínica, son clave para el diagnóstico diferencial. Las zonas FOPE son un ejemplo de edema medular fisiológico.</li>
+                            <li><strong>Sobreinterpretación de Hallazgos Meniscales:</strong> La vascularización intrameniscal es más prominente en niños pequeños y puede simular desgarros o dar lugar a una señal grado 2 normal. Los recesos meniscales normales (p.ej., receso poplíteo) pueden simular desgarros por efecto de volumen parcial.</li>
+                            <li><strong>Lesiones por Avulsión vs. Lesiones Ligamentosas Primarias:</strong> En el esqueleto inmaduro, las fisis y apófisis son puntos débiles. Las avulsiones óseas (p.ej., espina tibial, tuberosidad tibial, polo inferior rotuliano) son más comunes que los desgarros ligamentosos o tendinosos puros en niños más pequeños.</li>
+                            <li><strong>Artefactos Técnicos:</strong> El movimiento es un problema mayor en pediatría. Optimizar el protocolo para rapidez y utilizar técnicas de corrección de movimiento es importante. Los artefactos de susceptibilidad metálica (si hay implantes) pueden oscurecer la anatomía.</li>
+                            <li><strong>No Omitir Estructuras Periféricas:</strong> Evaluar sistemáticamente los tejidos blandos periarticulares, vasos y nervios. Un quiste de Baker es común, pero buscar complicaciones (rotura, hemorragia).</li>
+                            <li><strong>Uso Juicioso del Contraste:</strong> Reservar para sospecha de infección, tumor, artropatía inflamatoria o evaluación de viabilidad de OCD.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <button type="button" class="collapsible-button">
+                    <span>B. Checklist de Valoración Sistemática en RM de Rodilla Pediátrica</span>
+                    <span class="arrow">&#9654;</span>
+                </button>
+                <div class="collapsible-content">
+                    <div class="p-4">
+                        <p>Un enfoque sistemático es crucial para evitar omisiones. Se recomienda revisar cada estructura en todos los planos y secuencias disponibles. Este checklist está diseñado para ser utilizado secuencialmente:</p>
+                        <p class="text-xs italic">(Adaptado de fuentes radiológicas pediátricas estándar)</p>
+                        
+                        <ol class="list-decimal ml-6 space-y-3">
+                            <li><strong>Datos del Paciente y Calidad del Estudio:</strong>
+                                <ul class="list-disc ml-6">
+                                    <li>Edad, sexo, indicación clínica, antecedente traumático/quirúrgico.</li>
+                                    <li>Calidad técnica del estudio (artefactos, cobertura).</li>
+                                </ul>
+                            </li>
+                            <li><strong>Evaluación del Desarrollo Esquelético (Específico para Pediatría):</strong>
+                                <ul class="list-disc ml-6">
+                                    <li>Fisis (Placas de Crecimiento):
+                                        <ul class="list-circle ml-6">
+                                            <li>Todas las secuencias, todos los planos: Evaluar apertura/cierre (según edad). Grosor, regularidad del contorno. Señal trilaminar normal (T2/DP SG: cartílago hiper, ZCP hipo, espongiosa primaria hiper).</li>
+                                            <li>Sagital/Coronal T2 SG/STIR: Edema fiseal (ensanchamiento, señal hiperintensa anormal), edema perifiseal (FOPE en adolescentes).</li>
+                                            <li>Sagital/Coronal T1: Integridad de la ZCP. Detección de barras fiseales (puentes óseos hipointensos cruzando la fisis).</li>
+                                        </ul>
+                                    </li>
+                                    <li>Centros de Osificación Secundaria (COS):
+                                        <ul class="list-circle ml-6">
+                                            <li>Todas las secuencias, todos los planos: Presencia, tamaño, morfología, fragmentación (normal vs. patológica), congruencia.</li>
+                                            <li>Sagital/Coronal T1, T2 SG/STIR: Señal de la médula ósea del COS (roja vs. amarilla según edad). Edema medular.</li>
+                                        </ul>
+                                    </li>
+                                    <li>Médula Ósea (Epífisis, Metáfisis, Diáfisis):
+                                        <ul class="list-circle ml-6">
+                                            <li>Sagital/Coronal T1: Patrón de conversión de médula roja a amarilla según edad. Comparar señal con músculo (normalmente iso/hiperintensa, excepto neonatos). Descartar infiltración (hipointensa a músculo).</li>
+                                            <li>Sagital/Coronal T2 SG/STIR: Evaluar edema (hiperintenso), extensión. Descartar reemplazo medular (señal anormal no explicada por edema).</li>
+                                        </ul>
+                                    </li>
+                                    <li>Alineación y Morfología General: Varo/valgo, torsión tibial/femoral (cualitativo). Displasias condíleas, rotulianas.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Derrame Articular y Sinovial:</strong>
+                                <ul class="list-disc ml-6">
+                                    <li>Todas las secuencias sensibles al líquido (T2 SG, DP SG, STIR), todos los planos: Presencia, cantidad y distribución del derrame.</li>
+                                    <li>Axial/Sagital: Evaluar recesos suprapatelar, poplíteo, gastrocnemio-semimembranoso (quiste de Baker).</li>
+                                    <li>T1 SG CE (si se realiza): Engrosamiento y realce sinovial (sinovitis).</li>
+                                    <li>Todas las secuencias: Cuerpos libres intraarticulares, plicas sinoviales (medial, suprapatelar, infrapatelar/ligamentum mucosum).</li>
+                                </ul>
+                            </li>
+                            <li><strong>Meniscos (Medial y Lateral):</strong>
+                                <ul class="list-disc ml-6">
+                                    <li>Sagital DP (sin SG preferible para morfología), Sagital/Coronal DP/T2 SG:
+                                        <ul class="list-circle ml-6">
+                                            <li>Forma, tamaño, posición. Descartar menisco discoide (ver criterios en sección IV.A).</li>
+                                            <li>Señal intrameniscal: Grado 0-1 (normal), Grado 2 (intrasustancia, ¿vascularización?), Grado 3 (desgarro, contacto con superficie articular).</li>
+                                            <li>Morfología del desgarro (radial, longitudinal, horizontal, complejo, asa de cubo). Localización (cuerno anterior, cuerpo, cuerno posterior; zona roja-roja, roja-blanca, blanca-blanca). Extensión. Desplazamiento de fragmentos.</li>
+                                        </ul>
+                                    </li>
+                                    <li>Coronal DP/T2 SG: Evaluación de raíces meniscales (avulsión, desgarro radial completo). Extrusión meniscal (>3 mm).</li>
+                                    <li>Axial DP/T2 SG: Forma del cuerpo meniscal. Quistes meniscales (parameniscales, intrameniscales).</li>
+                                </ul>
+                            </li>
+                            <li><strong>Ligamentos:</strong>
+                                <ul class="list-disc ml-6">
+                                    <li>Ligamento Cruzado Anterior (LCA):
+                                        <ul class="list-circle ml-6">
+                                            <li>Sagital DP/T2 SG (plano oblicuo si es necesario): Continuidad de fibras desde fémur a tibia. Grosor, señal (normalmente hipointenso, puede tener estrías de señal intermedia). Curso (paralelo a línea de Blumensaat).</li>
+                                            <li>Coronal/Axial DP/T2 SG: Complementario para inserciones y curso.</li>
+                                            <li>Signos de rotura: discontinuidad, señal alta difusa, laxitud/horizontalización, masa de tejido blando en su lugar (desgarro crónico). Signos secundarios (contusiones óseas, traslación tibial anterior, signo del surco lateral profundo). Avulsión de espina tibial.</li>
+                                        </ul>
+                                    </li>
+                                    <li>Ligamento Cruzado Posterior (LCP):
+                                        <ul class="list-circle ml-6">
+                                            <li>Sagital DP/T2 SG: Continuidad, grosor, señal (banda hipointensa curva).</li>
+                                            <li>Signos de rotura: discontinuidad, engrosamiento con señal alta, avulsión ósea.</li>
+                                        </ul>
+                                    </li>
+                                    <li>Ligamento Colateral Medial (LCM):
+                                        <ul class="list-circle ml-6">
+                                            <li>Coronal DP/T2 SG: Continuidad de fibras superficiales y profundas. Señal, grosor. Edema/líquido periligamentoso.</li>
+                                            <li>Grados de lesión: I (edema periligamentoso), II (desgarro parcial, engrosamiento, señal alta), III (discontinuidad completa). Avulsión (Stieda).</li>
+                                        </ul>
+                                    </li>
+                                    <li>Complejo Ligamentario Lateral/Posterolateral (LCL, tendón poplíteo, ligamento popliteofibular, cápsula posterolateral):
+                                        <ul class="list-circle ml-6">
+                                            <li>Coronal DP/T2 SG: LCL (continuidad, señal).</li>
+                                            <li>Axial/Sagital DP/T2 SG: Tendón poplíteo en su surco y hacia inserción tibial. Ligamento popliteofibular.</li>
+                                            <li>Signos de lesión: Edema, desgarro, avulsión (signo del arco, cabeza del peroné).</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><strong>Cartílago Articular (Compartimentos Patelofemoral, Medial, Lateral):</strong>
+                                <ul class="list-disc ml-6">
+                                    <li>Sagital/Coronal/Axial DP/T2 SG, 3D GRE/FSE (si disponible):
+                                        <ul class="list-circle ml-6">
+                                            <li>Grosor, regularidad de superficie, señal.</li>
+                                            <li>Defectos condrales/osteocondrales: localización, tamaño, profundidad (espesor parcial, total), estabilidad del fragmento (OCD). Edema/quistes subcondrales.</li>
+                                        </ul>
+                                    </li>
+                                    <li>Rótula: Evaluar facetas medial/lateral y cresta.</li>
+                                    <li>Tróclea Femoral: Morfología (displasia troclear).</li>
+                                    <li>Cóndilos Femorales y Platillos Tibiales.</li>
+                                </ul>
+                            </li>
+                             <li><strong>Huesos (Fémur Distal, Tibia Proximal, Peroné Proximal, Rótula):</strong>
+                                <ul class="list-disc ml-6">
+                                    <li>Todas las secuencias, todos los planos:
+                                        <ul class="list-circle ml-6">
+                                            <li>T1: Evaluación de médula ósea (ya detallada en punto 2). Líneas de fractura hipointensas.</li>
+                                            <li>T2 SG/STIR: Edema medular (contusión, fractura oculta, reacción de estrés, osteítis). Líneas de fractura hiperintensas.</li>
+                                            <li>Contorno cortical: interrupción, irregularidad (desmoide cortical vs. destrucción). Reacción perióstica (benigna vs. agresiva).</li>
+                                            <li>Lesiones focales (tumores, quistes): caracterizar según criterios (márgenes, matriz, realce si CE).</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><strong>Mecanismo Extensor:</strong>
+                                <ul class="list-disc ml-6">
+                                    <li>Tendón del Cuádriceps y Tendón Rotuliano:
+                                        <ul class="list-circle ml-6">
+                                            <li>Sagital/Axial DP/T2 SG: Continuidad, grosor, señal (tendinosis: engrosamiento, señal alta focal). Desgarros (parcial, total). Avulsiones (polo superior/inferior rótula, tuberosidad tibial).</li>
+                                        </ul>
+                                    </li>
+                                     <li>Rótula: Posición (alta, baja - usar índices si es necesario en reconstrucciones sagitales). Estabilidad (signos de luxación previa: edema cóndilo lateral/rótula medial, lesión MPFL).</li>
+                                    <li>Retináculos Medial y Lateral:
+                                        <ul class="list-circle ml-6">
+                                            <li>Axial DP/T2 SG: Integridad, edema, desgarro (especialmente retináculo medial/MPFL en luxación rotuliana).</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><strong>Tejidos Blandos Periarticulares y Fosa Poplítea:</strong>
+                                <ul class="list-disc ml-6">
+                                    <li>Todas las secuencias, todos los planos:
+                                        <ul class="list-circle ml-6">
+                                            <li>Músculos: edema, desgarro, atrofia.</li>
+                                            <li>Bursas: prepatelar, infrarotuliana (superficial, profunda), anserina, semimembranoso-gastrocnemio. Derrame, engrosamiento paredes.</li>
+                                            <li>Grasa de Hoffa: edema, fibrosis (Hoffitis).</li>
+                                            <li>Paquete neurovascular poplíteo: compresión, variantes.</li>
+                                            <li>Gangliones, otras masas.</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><strong>Impresión Diagnóstica y Conclusiones:</strong>
+                                <ul class="list-disc ml-6">
+                                    <li>Resumir hallazgos principales.</li>
+                                    <li>Correlacionar con clínica si está disponible.</li>
+                                    <li>Mencionar limitaciones si existen.</li>
+                                </ul>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </section> <section id="plantilla-informe">
+                <h2>VI. Plantilla de Informe Radiológico Editable</h2>
+                <p>Esta plantilla sigue el orden del checklist y está diseñada para ser adaptable. Los campos entre [ ] deben ser completados por el radiólogo.</p>
+                <div class="copy-button-container">
+                    <button id="copyReportButton" class="action-button">Copiar Plantilla</button>
+                </div>
+                <div class="report-template-container">
+<pre id="reportTemplateContent">
+**INFORME DE RESONANCIA MAGNÉTICA DE RODILLA PEDIÁTRICA**
+
+**Fecha del Estudio:** `[Fecha]`
+**Nombre del Paciente:** `[Nombre Completo]`
+**Fecha de Nacimiento/Edad:** `[DD/MM/AAAA]` / `[Edad en años y/o meses]`
+**ID del Paciente:** `[Número de Identificación]`
+**Médico Solicitante:** `[Nombre del Médico]`
+**Indicación Clínica:** `[Motivo del estudio]`
+**Antecedentes Relevantes:** `[Trauma, cirugía previa, síntomas, etc.]`
+
+**TÉCNICA:**
+Se realizaron secuencias multiplanares y multieco de la rodilla [derecha/izquierda] en un equipo de RM de [Intensidad del campo, p.ej., 1.5T o 3T] [Nombre del Fabricante y Modelo], utilizando una antena de rodilla dedicada.
+Protocolo estándar incluye:
+* Sagital: DP, T2 SG
+* Coronal: T1, DP/T2 SG
+* Axial: DP/T2 SG
+Grosor de corte: `[p.ej., 3 mm]`. Gap intercorte: `[p.ej., 0.3 mm]`. FOV: `[p.ej., 15 cm]`.
+[Opcional: Se administró contraste intravenoso (Gadolinio, `[dosis y tipo]`) y se adquirieron secuencias T1 SG post-contraste en planos `[especificar]`.]
+[Opcional: Se incluyeron secuencias adicionales como `[p.ej., 3D GRE para cartílago, DWI, etc.]`.]
+Calidad del estudio: `[Adecuada/Limitada por artefactos de movimiento/etc.]`.
+
+**COMPARACIÓN:**
+`[Estudios previos disponibles para comparación (fecha y tipo) / Sin estudios previos para comparación.]`
+
+**HALLAZGOS:**
+
+**1. EVALUACIÓN DEL DESARROLLO ESQUELÉTICO:**
+* **Fisis (Placas de Crecimiento):**
+    * Fémur distal: `[Abierta/Parcialmente cerrada/Cerrada]. Morfología y señal: [Normal para la edad/Ensanchada/Irregular/Edema (describir)/Signos de barra fiseal (describir)]`.
+    * Tibia proximal: `[Abierta/Parcialmente cerrada/Cerrada]. Morfología y señal: [Normal para la edad/Ensanchada/Irregular/Edema (describir)/Signos de barra fiseal (describir)]`.
+    * Peroné proximal: `[Abierta/Parcialmente cerrada/Cerrada]. Morfología y señal: [Normal para la edad/Otra (describir)]`.
+* **Centros de Osificación Secundaria (COS):**
+    * Fémur distal, tibia proximal, rótula, cabeza del peroné: `[Presentes y de morfología y señal normal para la edad/Irregularidad fisiológica (describir)/Fragmentación (describir, diferenciar de OCD)/Edema (describir)]`.
+* **Médula Ósea (Epífisis, Metáfisis, Diáfisis - Fémur, Tibia, Peroné, Rótula):**
+    * Patrón de conversión de médula roja a amarilla: `[Acorde a la edad/Retrasado/Acelerado (describir)]`.
+    * Señal en T1: `[Normal, hiperintensa a músculo en metáfisis y epífisis convertidas/Isointensa o hipointensa patológica (describir localización y extensión)]`.
+    * Señal en secuencias sensibles al líquido (T2 SG/STIR): `[Normal/Áreas focales o difusas de edema (describir localización, extensión, posible etiología: contusión, estrés, inflamatorio, FOPE, etc.)/Lesión focal (describir)]`.
+* **Alineación y Morfología General:**
+    * Alineación tibiofemoral en el plano coronal: `[Normal/Varo leve/moderado/severo/Valgo leve/moderado/severo]`.
+    * Morfología condilar femoral y tibial: `[Normal/Displasia (describir)/Hipoplasia (describir)]`.
+    * Morfología rotuliana y troclear: `[Normal/Rótula [alta/baja/bipartita (localización fragmento)]/Displasia troclear (Tipo A/B/C/D de Dejour si aplica)]`.
+
+**2. DERRAME ARTICULAR Y SINOVIAL:**
+* Derrame articular: `[Ausente/Leve/Moderado/Severo]. Localización: [Suprapatelar/Generalizado/Otro]`.
+* Sinovial: `[Normal/Engrosamiento [leve/moderado/severo] (describir localización)]. [Sin realce patológico/Realce [leve/moderado/severo] post-contraste (si aplica), sugestivo de sinovitis]`.
+* Quiste poplíteo (de Baker): `[Ausente/Presente (dimensiones aproximadas, localización, comunicación con la articulación, signos de complicación como rotura o hemorragia)]`.
+* Cuerpos libres intraarticulares: `[Ausentes/Presentes (número, tamaño aproximado, localización, composición si es visible: osteocondral, cartilaginoso)]`.
+* Plicas sinoviales: `[No prominentes/Plica [medial/suprapatelar/infrapatelar] [prominente/engrosada/con signos de pinzamiento (edema adyacente, condropatía asociada)]]`.
+
+**3. MENISCOS:**
+* **Menisco Medial:**
+    * Morfología y señal: `[Normal/Desgarro (Grado 3 - describir tipo: radial, longitudinal, horizontal, complejo, asa de cubo; localización: cuerno anterior, cuerpo, cuerno posterior; extensión a superficie articular superior/inferior/ambas)/Señal Grado 2 (intrasustancia, no articular)/Degeneración mixoide]`.
+    * Raíz posterior: `[Íntegra/Desgarrada/Avulsionada]`. Extrusión: `[No significativa / >3mm (medir)]`. Quiste parameniscal: `[Ausente/Presente (describir)]`.
+* **Menisco Lateral:**
+    * Morfología y señal: `[Normal/Discoide (completo/incompleto - describir criterios)/Desgarro (Grado 3 - describir tipo, localización, extensión)/Señal Grado 2/Degeneración mixoide]`.
+    * Raíz posterior: `[Íntegra/Desgarrada/Avulsionada]`. Extrusión: `[No significativa / >3mm (medir)]`. Quiste parameniscal: `[Ausente/Presente (describir)]`.
+
+**4. LIGAMENTOS:**
+* **Ligamento Cruzado Anterior (LCA):** `[Íntegro, de grosor y señal normal/Edema intraligamentoso sin discontinuidad (esguince Grado I)/Desgarro parcial (fibras discontinuas pero algunas íntegras, engrosamiento, aumento de señal)/Desgarro completo (discontinuidad total, laxitud, hematoma asociado)/Avulsión de la espina tibial (describir fragmento y desplazamiento)]`. Signos secundarios: `[Presentes/Ausentes (contusiones óseas típicas, traslación tibial anterior >7mm, signo del surco lateral profundo, etc.)]`.
+* **Ligamento Cruzado Posterior (LCP):** `[Íntegro/Esguince/Desgarro parcial/Desgarro completo/Avulsión ósea]`.
+* **Ligamento Colateral Medial (LCM):** `[Íntegro/Esguince Grado I (edema periligamentoso)/Grado II (desgarro parcial, engrosamiento)/Grado III (desgarro completo, discontinuidad)/Avulsión (Stieda si aplica)]`.
+* **Complejo Ligamentario Lateral/Posterolateral (LCL, tendón poplíteo, etc.):** `[Íntegro/Lesión del LCL (describir grado)/Lesión del tendón poplíteo/Lesión del ligamento popliteofibular/Signo del arco (avulsión)/Otros hallazgos]`.
+
+**5. CARTÍLAGO ARTICULAR:**
+* **Compartimento Patelofemoral (rótula y tróclea):** `[Grosor y señal normales/Adelgazamiento focal/difuso/Fisuras superficiales/Defecto de espesor [parcial/total] (describir localización, tamaño en mm, profundidad %)]`. Edema/quistes subcondrales: `[Presentes/Ausentes]`.
+* **Compartimento Medial (cóndilo femoral y platillo tibial):** `[Ídem patelofemoral]`.
+* **Compartimento Lateral (cóndilo femoral y platillo tibial):** `[Ídem patelofemoral]`.
+    * Osteocondritis Disecante (OCD), si presente: `[Localización (p.ej., cara lateral del cóndilo femoral medial), tamaño del fragmento, estabilidad (signos de inestabilidad: líquido en interfaz, quistes subcondrales, brecha cartilaginosa, fragmento suelto), estado del cartílago suprayacente, edema medular asociado. Realce post-contraste del fragmento (si aplica)]`.
+
+**6. HUESOS (Fémur, Tibia, Peroné, Rótula - además de la evaluación del desarrollo):**
+* Líneas de fractura: `[Ausentes/Presentes (describir localización, tipo: Salter-Harris si aplica - especificar tipo, intra/extraarticular, desplazamiento)]`.
+* Contusiones óseas/Edema medular reactivo: `[Ausente/Presente (localización, patrón - p.ej., "kissing contusion", pivote-shift, contusión directa)]`.
+* Lesiones óseas focales (si no descritas previamente): `[Ausentes/Presente (describir tipo: FNO, osteocondroma, QOA, condroblastoma, osteosarcoma, sarcoma de Ewing, etc.; localización, tamaño, márgenes, matriz, reacción perióstica, componente de tejidos blandos, realce post-contraste si aplica)]`.
+* Apofisitis:
+    * Tuberosidad tibial (Osgood-Schlatter): `[Normal/Edema apofisario, fragmentación, edema del tendón rotuliano distal, bursitis infrarrotuliana profunda, edema de tejidos blandos anteriores]`.
+    * Polo inferior rotuliano (Sinding-Larsen-Johansson): `[Normal/Edema del polo inferior de la rótula, edema del tendón rotuliano proximal, edema de la grasa de Hoffa adyacente]`.
+
+**7. MECANISMO EXTENSOR:**
+* **Tendón del Cuádriceps:** `[Normal/Tendinosis (engrosamiento, aumento de señal focal)/Desgarro [parcial/completo] (localización, retracción)]`.
+* **Rótula (además de cartílago y desarrollo):** `[Posición normal (índice Insall-Salvati si medido)/Rótula [alta/baja]/Signos de inestabilidad rotuliana previa o actual (edema en cóndilo femoral lateral y faceta medial rotuliana, lesión del LPFM)]`.
+* **Tendón Rotuliano:** `[Normal/Tendinosis/Desgarro [parcial/completo] (localización)]`.
+* **Retináculos Medial y Lateral (incluyendo LPFM):** `[Íntegros/Edema/Desgarro (especialmente LPFM en luxación rotuliana)]`.
+
+**8. TEJIDOS BLANDOS PERIARTICULARES Y FOSA POPLÍTEA:**
+* Músculos (cuádriceps, isquiotibiales, gastrocnemios, poplíteo, etc.): `[Normales/Edema/Desgarro/Atrofia grasa (describir)]`.
+* Bursas (prepatelar, infrarrotuliana superficial y profunda, anserina, etc.): `[No distendidas/Distendidas con líquido simple/complejo (bursitis)]`.
+* Grasa de Hoffa: `[Normal/Edema (Hoffitis)/Fibrosis]`.
+* Paquete neurovascular poplíteo: `[Sin particularidades/Variante anatómica (describir)/Signos de compresión/Trombosis (raro)]`.
+* Otros hallazgos: `[Gangliones (localización, tamaño)/Masas de tejidos blandos no descritas previamente (describir)]`.
+
+**IMPRESIÓN:**
+1.  `[Hallazgo principal y diagnóstico, p.ej., Desgarro completo del LCA con contusiones óseas asociadas.]`
+2.  `[Segundo hallazgo significativo, p.ej., Desgarro radial del cuerno posterior del menisco medial.]`
+3.  `[Tercer hallazgo, p.ej., Derrame articular moderado.]`
+4.  `[Otros hallazgos relevantes, p.ej., Osificación irregular fisiológica del cóndilo femoral posterior, acorde a la edad.]`
+5.  `[Si aplica, correlacionar con estudios previos o clínica.]`
+
+****
+
+**Radiólogo:** `[Su Nombre y Firma (o identificación electrónica)]`
+**Fecha del Informe:** `[DD/MM/AAAA]`
+</pre>
+                </div>
+            </section> <section id="conclusion-guia">
+                <h2>VII. Conclusión</h2>
+                <p>La RM de rodilla pediátrica es una herramienta invaluable que ofrece una visión detallada de la anatomía y patología en un esqueleto en constante cambio. Su correcta aplicación e interpretación dependen críticamente del conocimiento de los patrones normales de desarrollo específicos para la edad, las variantes anatómicas comunes y los patrones de lesión únicos en niños. La optimización de los protocolos, incluyendo la selección juiciosa de secuencias estándar y avanzadas, y la adaptación de parámetros técnicos al tamaño del paciente, son esenciales para obtener imágenes de alta calidad diagnóstica, minimizando al mismo tiempo la necesidad de sedación.</p>
+                <p>Los hallazgos patológicos, ya sean traumáticos, congénitos, inflamatorios o tumorales, deben evaluarse en el contexto de la madurez esquelética del niño. Las fisis abiertas, la conversión de la médula ósea y la maduración del cartílago no solo influyen en los tipos de lesiones observadas, sino que también pueden simular patología si no se interpretan con cautela. Un enfoque sistemático para la lectura de la RM, junto con la conciencia de los errores comunes y la correlación clínica, son fundamentales para evitar diagnósticos erróneos.</p>
+                <p>Esta guía práctica busca proporcionar a los radiólogos pediátricos un marco de referencia para la realización e interpretación de la RM de rodilla en niños, con el objetivo final de mejorar la precisión diagnóstica y optimizar el manejo del paciente. La continua investigación y el desarrollo de nuevas técnicas de RM prometen seguir mejorando nuestra capacidad para evaluar las complejidades de la rodilla pediátrica.</p>
+            </section> </main>
+
+        <footer class="mt-12 pt-8 border-t border-slate-300 text-center text-sm text-slate-500">
+            <p>&copy; <span id="currentYear"></span> Guía de RM de Rodilla Pediátrica. Todos los derechos reservados.</p>
+            <p>Esta información está destinada a profesionales médicos.</p>
+        </footer>
+    </div>
+    <div id="toast" class="toast-message">Plantilla copiada al portapapeles</div>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        function downloadCSV(csv, filename) {
+            let csvFile;
+            let downloadLink;
+            const bom = new Uint8Array([0xEF, 0xBB, 0xBF]); // BOM for UTF-8
+            csvFile = new Blob([bom, csv], {type: "text/csv;charset=utf-8;"});
+            downloadLink = document.createElement("a");
+            downloadLink.download = filename;
+            downloadLink.href = window.URL.createObjectURL(csvFile);
+            downloadLink.style.display = "none";
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);
+        }
+
+        function exportTableToCSV(tableId, filename) {
+            let csv = [];
+            const table = document.getElementById(tableId);
+            if (!table) {
+                console.error("Error: Table with ID '" + tableId + "' not found.");
+                showToast(`Error: No se pudo encontrar la tabla "${tableId}" para exportar.`, true);
+                return;
+            }
+            const rows = table.querySelectorAll("tr");
+            
+            for (let i = 0; i < rows.length; i++) {
+                let row = [], cols = rows[i].querySelectorAll("td, th");
+                for (let j = 0; j < cols.length; j++) {
+                    let data = cols[j].innerText.replace(/(\r\n|\n|\r)+/gm, " ").replace(/(\s\s+)/g, ' ').trim();
+                    data = data.replace(/"/g, '""'); 
+                    if (data.includes(',') || data.includes('"')) {
+                        data = '"' + data + '"';
+                    }
+                    row.push(data);
+                }
+                csv.push(row.join(","));        
+            }
+            downloadCSV(csv.join("\n"), filename);
+        }
+
+        const collapsibles = document.querySelectorAll(".collapsible-button");
+        collapsibles.forEach(button => {
+            button.addEventListener("click", function() {
+                this.classList.toggle("active");
+                const content = this.nextElementSibling;
+                const arrow = this.querySelector(".arrow");
+                if (content.style.maxHeight && content.style.maxHeight !== "0px") {
+                    content.style.maxHeight = "0px";
+                    if(arrow) arrow.classList.remove("open");
+                    content.classList.remove("open");
+                } else {
+                    content.style.display = 'block'; 
+                    content.style.maxHeight = content.scrollHeight + "px";
+                    if(arrow) arrow.classList.add("open");
+                    content.classList.add("open");
+                } 
+            });
+        });
+
+        // Funcionalidad para copiar plantilla de informe
+        const copyReportButton = document.getElementById('copyReportButton');
+        const reportTemplateContent = document.getElementById('reportTemplateContent');
+        const toast = document.getElementById('toast');
+
+        function showToast(message, isError = false) {
+            toast.textContent = message;
+            toast.style.backgroundColor = isError ? '#ef4444' : '#10b981'; // red-500 for error, green-500 for success
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        if (copyReportButton && reportTemplateContent) {
+            copyReportButton.addEventListener('click', () => {
+                const reportText = reportTemplateContent.innerText;
+                // Usar document.execCommand para compatibilidad, ya que navigator.clipboard puede estar restringido en iframes
+                const textArea = document.createElement("textarea");
+                textArea.value = reportText;
+                textArea.style.position = "fixed"; // Evitar que se desplace la página
+                textArea.style.left = "-9999px";
+                document.body.appendChild(textArea);
+                textArea.focus();
+                textArea.select();
+                try {
+                    document.execCommand('copy');
+                    showToast('Plantilla copiada al portapapeles');
+                } catch (err) {
+                    console.error('Error al copiar la plantilla: ', err);
+                    showToast('Error al copiar la plantilla.', true);
+                }
+                document.body.removeChild(textArea);
+            });
+        }
+
+    </script>
+</body>
+</html>
